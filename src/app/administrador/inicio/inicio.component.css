@@ -1,0 +1,29 @@
+h1{
+    color: #FAE4CF;
+    background-color: #858558;
+    font-family: lemonmilk;
+}
+span{
+    letter-spacing: 1px;
+}
+#imagenes{
+    width: 50%;
+}
+.imagenNosotros{
+    text-align: center;
+}
+p, i{
+    font-size: 18px;
+    color: white;
+}
+.btn{
+    background-color: #FAE4CF;
+    border-color: #FAE4CF;
+    color: black;
+}
+.btn:hover{
+    background-color: #858558;
+    color: white;
+}
+
+

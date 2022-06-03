@@ -14,64 +14,79 @@ export class EditarDatosComponent implements OnInit {
 
   carga : boolean = false;
 
-  constructor(private editardatosservice : EditarDatosService, private form : FormBuilder, private usuarioservice : UsuarioService) { }
+  constructor(private editardatosservice : EditarDatosService, private form : FormBuilder, 
+    private usuarioservice : UsuarioService) { }
 
   miFormulario: FormGroup = this.form.group({
     nombre: ['',[Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
-    apellidos: ['', [ Validators.required, Validators.pattern('([a-zA-Z]+) ([a-zA-Z]+)')]],
+    apellidos: ['', [ Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
     telefono: ['', [ Validators.required, Validators.pattern('^[0-9,$]*$') ] ],
     dni:['', [ Validators.required, Validators.pattern('[0-9]{8}[A-Za-z]{1}') ]]
   })
 
+  
 
 
   /**Método para editar los datos del usuario */
   editarMisDatos(){
     let usuario : Usuario = this.miFormulario.value;
-    this.editardatosservice.editarmisDatos(usuario)
-    .subscribe({
-      next: (resp =>{
-        this.miFormulario.reset();
-        location.reload();
-      })
-      ,
-      error: resp => {
-        Swal.fire('Error', resp.error.mensaje, 'error')
+    if(this.miFormulario.valid){
+      this.editardatosservice.editarmisDatos(usuario)
+      .subscribe({
+        next: (resp =>{
+          this.miFormulario.reset();
         
-      }
-    })
+        })
+        ,
+        error: resp => {
+          Swal.fire({
+            title: 'Error', 
+            text: resp.error.mensaje, 
+            icon: 'error',
+            color: '#3d3d1b',
+            background: '#FAE4CF',
+            showConfirmButton: false,})
+          
+        }
+      });}
 
   }
 
 
-  nombre: string ='';
-  apellidos: string ='';
-  email: string ='';
-  telefono: string ='';
-  dni: string ='';
+  nombreUsuario: string ='';
+  apellidosUsuario: string ='';
+  emailUsuario: string ='';
+  telefonoUsuario: string ='';
+  dniUsuario: string ='';
 
   /**
    * Método para mostrar los datos del usuario
    */
    mostrarDatos(){
-
     this.usuarioservice.obtenerDatosUsuario()
     .subscribe({
       next: ((resp: { email: string; apellidos: string; nombre: string; telefono: string; dni: string; }) => {
-      this.email = resp.email;
-      this.apellidos = resp.apellidos;
-      this.nombre = resp.nombre;
-      this.telefono = resp.telefono;
-      this.dni= resp.dni;
+      this.emailUsuario = resp.email;
+      this.apellidosUsuario = resp.apellidos;
+      this.nombreUsuario = resp.nombre;
+      this.telefonoUsuario = resp.telefono;
+      this.dniUsuario = resp.dni;
       this.carga = true;
 
     }),
       error: (resp: { error: { mensaje: string | undefined; }; }) => {
-        Swal.fire('Error', resp.error.mensaje, 'error')
+        Swal.fire({
+          title: 'Error', 
+          text: resp.error.mensaje, 
+          icon: 'error',
+          color: '#3d3d1b',
+          background: '#FAE4CF',
+          showConfirmButton: false,})
         
       }
   });
   }
+
 
   ngOnInit(): void {
     this.mostrarDatos();

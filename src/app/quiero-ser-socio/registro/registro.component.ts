@@ -19,7 +19,7 @@ export class RegistroComponent implements OnInit {
     
   miFormulario: FormGroup = this.form.group({
     nombre: ['',[Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
-    apellidos: ['', [ Validators.required, Validators.pattern('([a-zA-Z]+) ([a-zA-Z]+)')]],
+    apellidos: ['', [ Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
     email: ['', [ Validators.required, Validators.pattern('^[^@]+@[^@]+\.[a-zA-Z]{2,}$')], [this.emailservice]],
     contrasenia: ['', [ Validators.required, Validators.minLength(6), Validators.maxLength(8)]],
     telefono: ['', [ Validators.required, Validators.pattern('^[0-9,$]*$') ] ],
@@ -31,31 +31,37 @@ export class RegistroComponent implements OnInit {
    */
   hacerRegistro (){
     let usuario : Usuario = this.miFormulario.value;
-    this.usuarioservice.registro(usuario)
-    .subscribe({
-      next: (resp => {
-       // this.usuarioservice.setToken(resp.token);
-       //resetamos los datos para no tener que borrar 
-        this.miFormulario.reset();
-        Swal.fire({
-          title: '¡Enhorabuena! Ya formas parte de nuestra manada :)',
-          icon: 'success',
-          showCancelButton: true,
-          confirmButtonColor: '#999966',
-          confirmButtonText: `Iniciar Sesión`,
-        }).then((result) => {
-          if (result.isConfirmed) {
-            this.router.navigateByUrl('/areasocios')
-          }
-        })
-      }),
-      error : err => {
-        Swal.fire(
-          'Error', err.error.mensaje , ('error')
-        )
-        
-      }
-    });
+    if(this.miFormulario.valid){
+      this.usuarioservice.registro(usuario)
+      .subscribe({
+        next: (resp => {
+          
+          this.miFormulario.reset();
+          Swal.fire({
+            title: '¡Enhorabuena! Ya formas parte de nuestra manada :)',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#999966',
+            confirmButtonText: `Iniciar Sesión`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigateByUrl('/areasocios')
+            }
+          })
+        }),
+        error : err => {
+          Swal.fire({
+            title: 'Error', 
+            text: err.error.mensaje, 
+            icon: 'error',
+            color: '#3d3d1b',
+            background: '#FAE4CF',
+            showConfirmButton: false,}
+          )
+          
+        }
+      });
+    }
   }
 
   ngOnInit(): void {

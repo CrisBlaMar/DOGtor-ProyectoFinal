@@ -6,22 +6,22 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
             <div class="form-floating mt-2">
-                <input class="form-control" id="nombre" formControlName="nombre" type="text" value="{{nombre}}">
-                <span class="form-text text-danger" *ngIf="miFormulario.controls['nombre'].errors && miFormulario.controls['nombre'].touched">El nombre no es correcto.</span>
+                <input class="form-control" id="nombre" formControlName="nombre" type="text" value="{{nombreUsuario}}">
+                <span class="form-text text-danger" *ngIf="miFormulario.controls['nombre'].errors && miFormulario.controls['nombre'].touched">El nombre no es correcto</span>
                 <label for="nombre" class="text-dark">Nombre</label>
             </div>
             <div class="form-floating mt-2">
-              <input class="form-control" id="apellidos" formControlName="apellidos"type="text" value="{{apellidos}}">
-              <span class="form-text text-danger" *ngIf="miFormulario.controls['apellidos'].errors && miFormulario.controls['apellidos'].touched">Debe introducir dos apellidos</span>
+              <input class="form-control" id="apellidos" formControlName="apellidos"type="text" value="{{apellidosUsuario}}">
+              <span class="form-text text-danger" *ngIf="miFormulario.controls['apellidos'].errors && miFormulario.controls['apellidos'].touched">El apellido no es correcto</span>
               <label for="apellidos" class="text-dark">Apellidos</label>
             </div>
             <div class="form-floating mt-2">
-              <input class="form-control" id="dni" formControlName="dni" type="text" value="{{dni}}">
+              <input class="form-control" id="dni" formControlName="dni" type="text" value="{{dniUsuario}}">
               <span class="form-text text-danger" *ngIf="miFormulario.controls['dni'].errors && miFormulario.controls['dni'].touched">El DNI no es válido, debe tener el siguiente formato: 12345678A</span>
               <label for="dni" class="text-dark">DNI</label>
             </div>
             <div class="form-floating mt-2">
-              <input class="form-control" id="telefono" formControlName="telefono" type="text" value="{{telefono}}">
+              <input class="form-control" id="telefono" formControlName="telefono" type="text" value="{{telefonoUsuario}}">
               <span class="form-text text-danger" *ngIf="miFormulario.controls['telefono'].errors && miFormulario.controls['telefono'].touched">Debe introducir un número de teléfono válido: 699999999</span>
               <label for="telefono" class="text-dark">Teléfono</label>
             </div>

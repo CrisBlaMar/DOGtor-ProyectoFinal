@@ -1,0 +1,24 @@
+<div *ngIf="comentarios.length == 0" >
+    <div class="nohaycomentario mt-5 mb-5">
+        <h1 class="text-center texto">Ups!</h1>
+        <h1 class="text-center texto">Parece que de momento no hay ningún comentario para revisar</h1><br><br>
+    <div class="icono">
+        <i class="fa fa-exclamation-circle fa-5x mb-5" aria-hidden="true"></i>
+    </div>
+    </div>
+</div>
+
+<div class="row mt-4 container-fluid">
+    <div class="comentario container-fluid col-lg-3 col-md-3 col-sm-12 mt-4 mb-4" style="width: 18rem;" *ngFor="let comen of comentarios">
+        <div >
+            <div class="row container-fluid botones mt-3 mb-2">
+                <button id="publicar" type="submit" class="btn btn-secondary col-6" (click)="publicarComentario(comen.id)">Publicar</button>
+                <button id="borrar" class="btn btn-secondary col-6" (click)="borrarComentario(comen.id)">Borrar</button>
+            </div>
+            <h5 class="mt-1">{{comen.titulo}}</h5>
+            <hr>
+            <h6 class="mb-2">{{comen.usuario}}</h6>
+            <p class="contenido">{{comen.contenido}}</p>
+        </div>
+    </div>
+  </div>

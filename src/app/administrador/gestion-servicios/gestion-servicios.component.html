@@ -1,0 +1,108 @@
+
+
+
+<div class="container-fluid">
+  <h1>GESTIÓN DE SERVICIOS</h1>
+
+  <div class="boton">
+    <button class="btn btn-primary publicar" data-bs-toggle="modal" data-bs-target="#examplemo" id="mimodal">
+      <i class="fa fa-plus" aria-hidden="true"></i> 
+      Publicar nuevo Servicio
+    </button><br><br>
+  </div>
+
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let serv of listaservicios">
+          <th scope="row">{{serv.referencia}}</th>
+          <td>{{serv.nombre}}</td>
+          <td>{{serv.descripcion}}</td>
+          <td>
+            <button type="button" class="btn btn-primary editar" 
+            data-bs-toggle="modal" data-bs-target="#exampleModal" id="myModal" (click)="obtenerDatosEdicion(serv.referencia)">
+             Editar
+            </button>
+          </td>
+          <td><button type="button" class="btn btn-primary borrar" (click)="borrarServicio(serv.referencia)">Borrar</button></td>
+        </tr>
+      </tbody>
+  </table>
+</div>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" 
+                aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4>Editar el servicio nº{{referenciaServicioAEditar}}</h4>
+            </div>
+            <div class="modal-body">
+              <div class="formulariologin mt-2 mb-2">
+
+                <div class=" mt-2">
+                  <form [formGroup]="miFormulario" >
+                    <div class="form-floating mt-2">
+                      <input class="form-control" id="nombre" formControlName="nombre" type="text" value="{{nombreServicioAEditar}}">
+                      <span class="form-text text-danger" *ngIf="miFormulario.controls['nombre'].errors && miFormulario.controls['nombre'].touched">Debe introducir un nombre correcto</span>
+                      <label for="nombre" class="text-dark">Nombre</label>
+                    </div>
+                    <div class="form-floating mt-2">
+                      <input class="form-control" id="descripcion" formControlName="descripcion" type="text" value="{{descripcionServicioAEditar}}">
+                      <span class="form-text text-danger" *ngIf="miFormulario.controls['descripcion'].errors && miFormulario.controls['descripcion'].touched">Debe introducir una descripción correcta</span>
+                      <label for="descripcion" class="text-dark">Descripción</label>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary" (click)="editarServicio(referenciaServicioAEditar)" [disabled]="miFormulario.invalid" type="submit" routerLink="/gestionservicios" >Editar servicio</button>
+                  </form>
+                </div>  
+            </div>
+            </div>      
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="examplemo" tabindex="-1" 
+                aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4>Publicar un nuevo servicio</h4>
+            </div>
+            <div class="modal-body">
+              <div class="formulariologin mt-2 mb-2">
+
+                <div class=" mt-2">
+                  <form [formGroup]="miFormularioPublicado" >
+                    <div class="form-floating mt-2">
+                      <input class="form-control" id="nom" formControlName="nombre" type="text">
+                      <span class="form-text text-danger" *ngIf="miFormularioPublicado.controls['nombre'].errors && miFormularioPublicado.controls['nombre'].touched">Debe introducir un nombre correcto</span>
+                      <label for="nom" class="text-dark">Nombre</label>
+                    </div>
+                    <div class="form-floating mt-2">
+                      <input class="form-control" id="des" formControlName="descripcion" type="text">
+                      <span class="form-text text-danger" *ngIf="miFormularioPublicado.controls['descripcion'].errors && miFormularioPublicado.controls['descripcion'].touched">Debe introducir una descripción correcta</span>
+                      <label for="des" class="text-dark">Descripción</label>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary" (click)="publicarServicio()" [disabled]="miFormularioPublicado.invalid" type="submit">Publicar nuevo servicio</button>
+                  </form>
+                </div>  
+            </div>
+            </div>      
+        </div>
+    </div>
+</div>
+
+
+
+

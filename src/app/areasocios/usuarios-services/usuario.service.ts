@@ -40,7 +40,7 @@ export class UsuarioService {
     const body = usuario;
     const opcionHeader = new HttpHeaders();
     opcionHeader.append('Access-Control-Allow-Origin','*');
-    return this.httpclient.post<AuthResponse>(url, body, {headers:opcionHeader}); 
+    return this.httpclient.post<Usuario>(url, body, {headers:opcionHeader}); 
   }
 
   /**Método para registrar mascotas a un usuario */

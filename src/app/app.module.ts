@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DondeEstoyModule } from './donde-estoy/donde-estoy.module';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { DondeEstoyModule } from './donde-estoy/donde-estoy.module';
     DondeEstoyModule
     
   ],
-  providers: [],
+  providers: [{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

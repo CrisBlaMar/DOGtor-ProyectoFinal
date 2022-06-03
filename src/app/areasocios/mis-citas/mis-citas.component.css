@@ -27,10 +27,11 @@ h5{
      background-color: #44522b;
  }
  .nohaycita{
-     background-color: #E9BB97;
+     background-color: #FAE4CF;
      width: 60%;
      margin: auto;
-     border-radius: 30px;
+     border-radius: 15px;
+     color: #44522b;
  }
  p{
      font-size: 28px;

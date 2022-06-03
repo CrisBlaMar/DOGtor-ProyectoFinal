@@ -1,0 +1,24 @@
+<h1>GESTIÓN DE CITAS</h1>
+<div class="container row" >
+    <div class="card text-center col-lg-3 col-md-6 col-sm-12 col-xs-12 mt-2 m-2" 
+    *ngFor="let cita of citas, let i = index">
+        <div class="card-body">
+            <h5>Cita nº{{i+1}}</h5>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Fecha y hora</th>
+                    <th scope="col">Mascota</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{cita.fecha}}</td>
+                    <td>{{cita.mascota.nombre}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+        </div>
+    </div>
+</div>

@@ -29,11 +29,14 @@ import { catchError, map, Observable, of } from 'rxjs';
       map (resp => {
         
         if(resp.email != null){
-            return {enUso: true};
+          return {enUso: true};
         }else{
-          return null;
+          return {enUso: false};
         }
-      })
+      }),
+       catchError((er) => {
+         return of(null);
+       })
     );
     }
   

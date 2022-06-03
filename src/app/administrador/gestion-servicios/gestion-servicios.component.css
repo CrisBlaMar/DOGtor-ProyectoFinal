@@ -1,0 +1,41 @@
+.editar{
+    background-color: #e0b48a;
+    color: black;
+    border-color: #e0b48a;
+}
+.editar:hover{
+    background-color: #b07f51;
+    border-color: #b07f51;
+    color: white;
+}
+.borrar{
+    background-color: brown;
+    border-color: brown;
+    color: white;
+}
+.borrar:hover{
+    background-color: rgb(78, 21, 21);
+    border-color: rgb(78, 21, 21);
+    color: white;
+}
+.publicar{
+    text-align: right;
+    background-color: #E9BB97;
+    border-color: #E9BB97;
+    color: black;
+}
+.publicar:hover{
+    background-color: #a07351;
+    border-color: #a07351;
+    color: white;
+}
+table{
+    background-color: #FAE4CF;
+    border-color: #b07f51;
+}
+th{
+    color: #b07f51;
+}
+.boton{
+    text-align: right;
+}

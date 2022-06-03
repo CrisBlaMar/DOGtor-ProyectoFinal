@@ -1,0 +1,63 @@
+.card{
+    background-color: #FAE4CF;
+    border-radius: 10%;
+}
+img{
+    width: 20%;
+}
+.card-text{
+    font-weight: bold;
+}
+.container-fluid{
+    padding-right:0px;
+}
+.boton{
+    text-align: right;
+}
+.publicar{
+    text-align: right;
+    background-color: #E9BB97;
+    border-color: #E9BB97;
+    color: black;
+}
+.publicar:hover{
+    background-color: #a07351;
+    border-color: #a07351;
+    color: white;
+}
+.nuevousu{
+    margin: auto;
+    background-color: #999966;
+    color: white;
+}
+.nuevousu:hover{
+    background-color: #d6d69a;
+    color: black;
+}
+.modal-content{
+    background-color: #FAE4CF;
+}
+input{
+    background-color: #FAE4CF;
+}
+.borrar{
+    background-color: brown;
+    color: white;
+}
+.borrar:hover{
+    background-color: rgb(232, 59, 59);
+}
+.editar{
+    background-color: #999966;
+    color: white;
+}
+.editar:hover{
+    background-color: #c6c685;
+}
+.mascotas{
+    background-color: #E9BB97;
+}
+.mascotas:hover{
+    background-color: #ba855c;
+    color: white;
+}

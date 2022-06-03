@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  baseUrl: 'https://dogtorback.herokuapp.com',
+  // baseUrl: 'https://dogtorback.herokuapp.com',
+  baseUrl: 'http://localhost:9000',
   production: false
 };
 

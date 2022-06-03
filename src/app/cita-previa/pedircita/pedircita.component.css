@@ -26,8 +26,8 @@ label{
       border-top: none;
       border-right: none;
       border-left: none;
-      background-color: #CC9973;
-      color: #ffffff;
+      background-color: #FAE4CF;
+      color: #253013;
       border-color: white;
   }
   ::placeholder { 
@@ -44,7 +44,7 @@ label{
     text-align: center;
     border-radius: 20px;
     color: white;
-    background-color: #e9bb97;
+    background-color: #FAE4CF;
     background-size: cover;
 
 }

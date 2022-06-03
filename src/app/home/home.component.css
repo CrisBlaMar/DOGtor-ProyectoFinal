@@ -1,7 +1,10 @@
 
 h1, p{
     margin:auto;
-}
+    color: #FAE4CF;
+    background-color: #858558;
+}  
+
 .textoenlaces{
     color: #fafafa;
     font-size: 20px;
@@ -82,8 +85,26 @@ a{
     visibility: visible;
     opacity: 1;
   }
+  .btn{
+      background-color: #FAE4CF;
+      color: #51512a;
+      font-family: cocogose;
+      font-weight: bold;
+  }
+  .btn:hover{
+      background-color: #51512a;
+      color: #FAE4CF;
+  }
 
-
+  .card{
+      margin: auto;
+      
+  }
+label{
+    font-family: cocogose;
+    color: #FAE4CF;
+    font-weight: bold;
+}
 
 
 

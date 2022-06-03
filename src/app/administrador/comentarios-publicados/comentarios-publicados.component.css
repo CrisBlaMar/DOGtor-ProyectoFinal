@@ -1,0 +1,15 @@
+#borrar{
+    background-color: brown;
+    color: white;
+    height: 40px;
+}
+#borrar:hover{
+    background-color: rgb(163, 95, 95);
+    color: black;
+}
+.comentario{
+    background-color: #FAE4CF;
+}
+.botones{
+    margin: auto;
+}

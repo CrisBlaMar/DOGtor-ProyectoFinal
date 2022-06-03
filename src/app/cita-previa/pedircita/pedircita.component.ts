@@ -62,13 +62,22 @@ export class PedircitaComponent implements OnInit {
         this.citaPrevia.reset();
         Swal.fire({
           title: '¡Su cita ha sido registrada satisfactoriamente!',
-          icon: 'success'
+          icon: 'success',
+          showConfirmButton: false,
+          color: '#3d3d1b',
+          background: '#FAE4CF'
         })
       })
       ,
       error: resp => {
         console.log(resp);
-        Swal.fire('Error', resp.error.mensaje, 'error');
+        Swal.fire({
+          title: 'Error', 
+          text: resp.error.mensaje, 
+          icon: 'error',
+          color: '#3d3d1b',
+          background: '#FAE4CF',
+          showConfirmButton: false,});
         
       }
     });

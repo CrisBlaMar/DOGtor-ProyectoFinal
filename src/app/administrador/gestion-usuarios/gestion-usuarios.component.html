@@ -1,0 +1,131 @@
+
+
+
+
+    <div class="container-fluid row text-center" >
+        <h1>USUARIOS DE LA CLÍNICA DOGTOR</h1>
+    <div class="boton">
+        <button class="btn btn-primary publicar" data-bs-toggle="modal" data-bs-target="#examplemo" id="mimodal">
+        <i class="fa fa-plus" aria-hidden="true"></i> 
+        Publicar nuevo Usuario
+        </button><br><br>
+    </div>
+        <div class="card container-fluid col-lg-3 col-md-6 col-sm-12 col-xs-12 mt-2 mb-2" *ngFor="let usu of usuariosUsers">
+            
+            <div class="card-body" >
+                <img src="../../../assets/img/usuario.png" alt=""><br><br>
+                <p class="card-text"><i class="fa fa-user" aria-hidden="true"></i> {{usu.nombre}}</p>
+                <p class="card-text"><i class="fa fa-user-circle" aria-hidden="true"></i> {{usu.apellidos}}</p>
+                <p class="card-text"><i class="fa fa-envelope" aria-hidden="true"></i> {{usu.email}}</p>
+                <p class="card-text"><i class="fa fa-id-card" aria-hidden="true"></i> {{usu.dni}}</p>
+                <p class="card-text"><i class="fa fa-phone" aria-hidden="true"></i> {{usu.telefono}}</p>
+                <button class="btn borrar m-1" (click)="borrarUsuario(usu.email)">Borrar</button>
+                <button type="button" class="btn editar" 
+                    data-bs-toggle="modal" data-bs-target="#exampleModal" id="myModal" (click)="obtenerDatosEdicion(usu.email)">
+                    Editar
+                </button><br>
+                <button class="btn mascotas" routerLink="mascotasusuarios">Ver mascotas</button>
+            </div>
+        </div>
+    </div>
+
+  <div class="modal fade" id="examplemo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h4>Publicar un nuevo usuario</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="formulariologin mt-2 mb-2">
+
+                        <div class=" mt-2">
+                            <form [formGroup]="miFormulario" (ngSubmit)="hacerRegistro()" >
+                                <div class="col-lg-12">
+                                    <div class="form-floating mt-2">
+                                        <input class="form-control" id="email" type="text" formControlName="email">
+                                        <label for="email" class="text-dark">Email</label>
+                                        <span class="form-text text-danger" *ngIf="campoNoValido('email')">{{emailErrorMessage}}</span>
+                                        
+                                    </div>
+                                    <div class="form-floating mt-2">
+                                        <input class="form-control" id="contrasenia" formControlName="contrasenia" type="password">
+                                        <span class="form-text text-danger" *ngIf="miFormulario.controls['contrasenia'].errors && miFormulario.controls['contrasenia'].touched">La contraseña debe tener entre 6 y 8 carácteres</span>
+                                        <label for="contrasenia" class="text-dark">Contraseña</label>
+                                    </div>
+                                    <div class="form-floating mt-2">
+                                      <input class="form-control" id="nombre" formControlName="nombre" type="text">
+                                      <span class="form-text text-danger" *ngIf="miFormulario.controls['nombre'].errors && miFormulario.controls['nombre'].touched">El nombre no es correcto</span>
+                                      <label for="nombre" class="text-dark">Nombre</label>
+                                    </div>
+                                  <div class="form-floating mt-2">
+                                    <input class="form-control" id="apellidos" formControlName="apellidos"type="text">
+                                    <span class="form-text text-danger" *ngIf="miFormulario.controls['apellidos'].errors && miFormulario.controls['apellidos'].touched">El apellido o apellidos no son correctos</span>
+                                    <label for="apellidos" class="text-dark">Apellidos</label>
+                                  </div>
+                                  <div class="form-floating mt-2">
+                                    <input class="form-control" id="dni" formControlName="dni" type="text">
+                                    <span class="form-text text-danger" *ngIf="miFormulario.controls['dni'].errors && miFormulario.controls['dni'].touched">El DNI no es válido, debe tener el siguiente formato: 12345678A</span>
+                                    <label for="dni" class="text-dark">DNI</label>
+                                  </div>
+                                  <div class="form-floating mt-2">
+                                    <input class="form-control" id="telefono" formControlName="telefono" type="text">
+                                    <span class="form-text text-danger" *ngIf="miFormulario.controls['telefono'].errors && miFormulario.controls['telefono'].touched">Debe introducir un número de teléfono válido: 699999999</span>
+                                    <label for="telefono" class="text-dark">Teléfono</label>
+                                  </div>
+                                    <button class="btn nuevousu mt-3 mb-2 text-center" [disabled]="miFormulario.invalid" type="submit">Registrar</button>
+                                  </div>
+                                
+                            </form>
+                        </div>  
+                    </div>
+                </div>      
+            </div>
+        </div>
+    </div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4>Editar el Usuario {{nombreUsuario}}</h4>
+            </div>
+            <div class="modal-body">
+              <div class="formulariologin mt-2 mb-2">
+
+                <div class=" mt-2">
+                    <form [formGroup]="miFormularioEditado" (ngSubmit)="editarUsuario(emailUsuario)">
+                        <div class="col-lg-12">
+                          <div class="form-floating mt-2">
+                              <input class="form-control" id="nombreedi" formControlName="nombre" type="text" value="{{nombreUsuario}}">
+                              <span class="form-text text-danger" *ngIf="miFormularioEditado.controls['nombre'].errors 
+                              && miFormularioEditado.controls['nombre'].touched">El nombre no es correcto</span>
+                              <label for="nombreedi" class="text-dark">Nombre</label>
+                          </div>
+                          <div class="form-floating mt-2">
+                            <input class="form-control" id="apellidosedi" formControlName="apellidos"type="text" value="{{apellidosUsuario}}">
+                            <span class="form-text text-danger" *ngIf="miFormularioEditado.controls['apellidos'].errors 
+                            && miFormularioEditado.controls['apellidos'].touched">El apellido o apellidos no son correctos</span>
+                            <label for="apellidosedi" class="text-dark">Apellidos</label>
+                          </div>
+                          <div class="form-floating mt-2">
+                            <input class="form-control" id="dniedi" formControlName="dni" type="text" value="{{dniUsuario}}">
+                            <span class="form-text text-danger" *ngIf="miFormularioEditado.controls['dni'].errors 
+                            && miFormularioEditado.controls['dni'].touched">El DNI no es válido, debe tener el siguiente formato: 12345678A</span>
+                            <label for="dniedi" class="text-dark">DNI</label>
+                          </div>
+                          <div class="form-floating mt-2">
+                            <input class="form-control" id="telefonoedi" formControlName="telefono" type="text" value="{{telefonoUsuario}}">
+                            <span class="form-text text-danger" *ngIf="miFormularioEditado.controls['telefono'].errors 
+                            && miFormularioEditado.controls['telefono'].touched">Debe introducir un número de teléfono válido: 699999999</span>
+                            <label for="telefonoedi" class="text-dark">Teléfono</label>
+                          </div><br>
+                          <button class="btn editar" (click)="editarUsuario(emailUsuario)" [disabled]="miFormularioEditado.invalid" type="submit">Editar Usuario</button>
+                          </div>
+                    </form>
+                </div>  
+            </div>
+            </div>      
+        </div>
+    </div>
+</div>

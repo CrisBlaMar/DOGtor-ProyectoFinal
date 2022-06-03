@@ -36,23 +36,31 @@ p, i{
     border-radius: 70px;
 
 }
-.card:hover{
-    border-color: #E9BB97;
-    border-width: 5px;
-}
+
 .card-img-top{
     width: 100%;
     border-radius: 70px;
     border-bottom-left-radius: 0px;
 }
 a{
-    border-color: #E9BB97;
+    background-color: #51512a;
     border-radius: 50px;
     color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 #trabajo{
     font-size: 15px;
     font-style: normal;
     color:#444421;
+}
+.comentario{
+    background-color: #FAE4CF;
+    border-radius: 5%;
+}
+.contenido{
+    color: black;
+}
+h6{
+    color: #858558;
 }
 

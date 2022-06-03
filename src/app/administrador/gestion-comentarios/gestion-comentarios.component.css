@@ -1,0 +1,35 @@
+
+#publicar{
+    background-color: #6D6D43;
+    color: white;
+    height: 40px;
+}
+#publicar:hover{
+    background-color: rgb(157, 202, 157);
+    color: black;
+}
+#borrar{
+    background-color: brown;
+    color: white;
+    height: 40px;
+}
+#borrar:hover{
+    background-color: rgb(163, 95, 95);
+    color: black;
+}
+.comentario{
+    background-color: #FAE4CF;
+}
+.botones{
+    margin: auto;
+}
+.nohaycomentario{
+    background-color:#FAE4CF;
+    width: 60%;
+    margin: auto;
+    border-radius: 15px;
+}
+.icono{
+    text-align: center;
+
+}

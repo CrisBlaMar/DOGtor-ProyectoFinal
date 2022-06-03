@@ -28,13 +28,12 @@ export class Guard implements CanActivate{
                 return acceso;
             }),
             catchError (err =>{
-                console.log(err);
                 Swal.fire({
                     title: '¡ERROR!',
                     text: 'No puede acceder. Debe iniciar sesión',
                     icon: 'error'
                   });
-                this.router.navigateByUrl('/areasocios');
+                this.router.navigateByUrl('');
                 acceso = false;
                 return of(acceso)
                 

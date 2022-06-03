@@ -8,7 +8,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     color: rgb(58, 65, 20);
-    background-color: #e9bb97;
+    background-color: #FAE4CF;
     background-size: cover;
 
 }
@@ -25,14 +25,14 @@
     text-align: center;
     border-radius: 20px;
     color: rgb(40, 49, 17);
-    background-color: #e9bb97;
+    background-color: #FAE4CF;
     background-size: cover; 
 }
 input, textarea{
     border-top: none;
     border-right: none;
     border-left: none;
-    background-color: #CC9973;
+    background-color: #FAE4CF;
     color: #ffffff;
     border-color: white;
 }

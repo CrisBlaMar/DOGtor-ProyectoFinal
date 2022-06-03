@@ -8,7 +8,6 @@ import { MimascotaComponent } from './mimascota/mimascota.component';
 import { MisdatosComponent } from './misdatos/misdatos.component';
 import { EditarDatosComponent } from './editar-datos/editar-datos.component';
 import { MisCitasComponent } from './mis-citas/mis-citas.component';
-
 const routes: Routes = [
   {
     path:'', component: LoginComponent

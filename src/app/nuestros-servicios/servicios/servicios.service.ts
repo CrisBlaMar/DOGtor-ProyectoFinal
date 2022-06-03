@@ -20,7 +20,7 @@ export class ServicioService {
   obtenerServicios(){
     const url = `${this.baseUrl}/servicio`;
     return this.httpclient.get<Servicio[]>(url);
-    //Servicio es un array de servicios
+    
   }
 
 }

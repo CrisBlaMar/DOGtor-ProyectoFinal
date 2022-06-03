@@ -44,15 +44,17 @@ export class MisdatosComponent implements OnInit {
 
     }),
       error: resp => {
-        Swal.fire('Error', resp.error.mensaje, 'error')
+        Swal.fire({
+          title: 'Error', 
+          text: resp.error.mensaje, 
+          icon: 'error',
+          color: '#3d3d1b',
+          background: '#FAE4CF',
+          showConfirmButton: false,})
         
       }
   });
   }
-
-
-
-
 
   ngOnInit(): void {
     this.mostrarDatos();

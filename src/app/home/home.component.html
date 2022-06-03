@@ -63,6 +63,41 @@
     </div>
 
 
+    <!--HACER UN COMENTARIO SOBRE LA CLÍNICA-->
+  <h1 class="mt-3 text-center " ><strong>¿Quieres dejarnos un comentario?</strong></h1>
+  <div class="text-center mt-4 mb-4">
+    <i class="fa fa-comments fa-5x" aria-hidden="true" style="color: #FAE4CF;"></i>
+  </div>
+   <div class="container-fluid">
+    <form class="contacto" [formGroup]="comentario" (ngSubmit)="enviarComentario()" >
+      <div class="form-group">
+          <label for="titulo">Título</label>
+          <input id="titulo" class="mt-3" type="text" class="form-control" formControlName="titulo" placeholder="Título..." required><br>
+          <span class="form-text text-danger" *ngIf="comentario.controls['titulo'].errors && comentario.controls['titulo'].touched">El título no puede estar vacío</span><br>
+      </div>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" class="mt-3" type="text" class="form-control" formControlName="usuario" placeholder="Nombre... (Puede escribir ''Anónimo'')" value="Anonimo" required><br>
+        <span class="form-text text-danger" *ngIf="comentario.controls['usuario'].errors && comentario.controls['usuario'].touched">Debe introducir un nombre correcto</span><br>
+      </div>
+      <div class="form-group">
+          <label for="comentario">Comentario</label>
+          <textarea id="comentario" class="mt-3" class="form-control" formControlName="contenido" placeholder="Comentario..." required></textarea><br>
+          <span class="form-text text-danger" *ngIf="comentario.controls['contenido'].errors && comentario.controls['contenido'].touched">Debe introducir un comentario</span>
+      </div><br>
+      <div>
+          <button class="btn" type="submit" [disabled]="comentario.invalid" >Enviar Comentario</button>
+      </div>
+    </form>
+
+    </div><br><br>
+
+
+
+
+
+
+    <!--IMAGENES DEL FINAL DE LA PÁGINA-->
   <div class="container-fluid mb-2">
     <div class="row">
       <div class="col-lg-4 col-md-12">

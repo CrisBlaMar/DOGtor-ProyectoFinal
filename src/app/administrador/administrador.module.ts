@@ -1,0 +1,37 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { RouterModule } from '@angular/router';
+import { AdministradorRoutingModule } from './administrador-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GestionCitasComponent } from './gestion-citas/gestion-citas.component';
+import { GestionComentariosComponent } from './gestion-comentarios/gestion-comentarios.component';
+import { GestionServiciosComponent } from './gestion-servicios/gestion-servicios.component';
+import { MascotasUsuariosComponent } from './gestion-usuarios/mascotas-usuarios/mascotas-usuarios.component';
+import { ComentariosPublicadosComponent } from './comentarios-publicados/comentarios-publicados.component';
+import { GuardAdmin } from '../areasocios/guardAdmin.service';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+
+
+
+@NgModule({
+  declarations: [
+    GestionUsuariosComponent,
+    InicioComponent,
+    GestionCitasComponent,
+    GestionComentariosComponent,
+    GestionServiciosComponent,
+    MascotasUsuariosComponent,
+    ComentariosPublicadosComponent
+  ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    AdministradorRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [GuardAdmin, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService]
+})
+export class AdministradorModule { }

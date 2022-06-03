@@ -13,6 +13,7 @@ import { DondeEstoyModule } from '../donde-estoy/donde-estoy.module';
 import { EditarDatosComponent } from './editar-datos/editar-datos.component';
 import { HijoComponent } from './hijo/hijo.component';
 import { MisCitasComponent } from './mis-citas/mis-citas.component';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -35,6 +36,6 @@ import { MisCitasComponent } from './mis-citas/mis-citas.component';
     ReactiveFormsModule,
     DondeEstoyModule
   ],
-  providers: [Guard]
+  providers: [Guard, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService]
 })
 export class AreasociosModule { }
