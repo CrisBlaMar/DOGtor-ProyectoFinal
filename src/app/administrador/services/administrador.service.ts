@@ -6,6 +6,7 @@ import { Cita, Citas } from '../../interfaces/cita.interfaces';
 import { Servicio } from '../../interfaces/servicio.interfaces';
 import { Mascota } from 'src/app/interfaces/mascota.interfaces';
 import { Comentario } from '../../interfaces/comentario.interfaces';
+import { Email } from 'src/app/interfaces/email.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -62,13 +63,6 @@ export class AdministradorService {
     const url  = `${this.baseUrl}/servicio`
     const body = servicio;
     return this.httpclient.post<Servicio>(url, body);
-  }
-
- 
-  /**Método para mostrar la lista de mascotas de un usuario */
-  mostrarMascotasUsuario(email : string){
-    const url = `${this.baseUrl}user/${email}/mascota`
-    return this.httpclient.get<Mascota []>(url);
   }
   
   /**Método para obtener los datos de un usuario */
@@ -144,7 +138,84 @@ export class AdministradorService {
   /**Método para obtener un usuario por su email */
   obtenerUsuarioPorEmail(email: string){
     const url = `${this.baseUrl}/usuario/${email}`
-    return this.httpclient.get<Usuario>(url);
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.get<Usuario>(url, {headers:opcionHeader});
   }
 
+  /**Método para obtener las mascotas de un usuario en concreto por su email */
+  obtenerMascotasUsuario(email:string){
+    const url= `${this.baseUrl}/usuario/${email}/mascotas`
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.get<Mascota[]>(url, {headers:opcionHeader});
+  }
+
+  /**Método para obtener las citas de un usuario en concreto por su email */
+  obtenerCitasUsuario(email: string){
+    const url =  `${this.baseUrl}/usuario/${email}/cita`
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.get<Citas[]>(url, {headers:opcionHeader});
+  }
+
+
+  /**Método para modificar los datos de una mascota de un usuario */
+  editarMascota(chip : number, mascota : Mascota){
+    const url = `${this.baseUrl}/user/mascota/${chip}`
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    const body = mascota;
+    return this.httpclient.put<Mascota>(url, body, {headers:opcionHeader});
+
+  }
+
+  /**Método para obtener los datos de una mascota por su chip */
+  obtenerDatosMascota(chip: number){
+    const url = `${this.baseUrl}/user/mascota/${chip}`
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.get<Mascota>(url, {headers:opcionHeader});
+  }
+
+  /**Método para borrar una mascota */
+  borrarMascota(chip: number){
+    const url = `${this.baseUrl}/user/mascota/${chip}`
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.delete<Mascota>(url, {headers:opcionHeader});
+  }
+
+  /**Método para borrar una cita */
+  borrarCita(id:number){
+    const url = `${this.baseUrl}/user/cita/${id}`
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.delete<Citas>(url, {headers:opcionHeader});
+  }
+
+  /**Método para enviar un mensaje de aviso cuando una cita haya sido eliminada */
+  enviarMensaje(mensaje : Email){
+    const url = `${this.baseUrl}/enviaremail`;
+    const body = mensaje;
+    return this.httpclient.post<Email>(url, body);
+  }
+
+  /**Método para realizar una cita previa */
+  realizarCitaPrevia (cita : Cita, chip: number, email: string){
+    const url = `${this.baseUrl}/user/${email}/cita/mascota/${chip}`;
+    const body =  cita;
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+
+    return this.httpclient.post<Cita>(url, body, {headers:opcionHeader});
+  }
 }

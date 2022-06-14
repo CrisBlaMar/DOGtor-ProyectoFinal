@@ -1,5 +1,5 @@
 export interface Mascota{
-    chip: string,
+    chip: number,
     especie: string,
     nombre: string,
     pelaje: string,

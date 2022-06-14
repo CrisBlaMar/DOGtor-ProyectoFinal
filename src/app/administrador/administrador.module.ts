@@ -12,6 +12,7 @@ import { MascotasUsuariosComponent } from './gestion-usuarios/mascotas-usuarios/
 import { ComentariosPublicadosComponent } from './comentarios-publicados/comentarios-publicados.component';
 import { GuardAdmin } from '../areasocios/guardAdmin.service';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { CitasUsurariosComponent } from './gestion-usuarios/citas-usurarios/citas-usurarios.component';
 
 
 
@@ -23,7 +24,8 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     GestionComentariosComponent,
     GestionServiciosComponent,
     MascotasUsuariosComponent,
-    ComentariosPublicadosComponent
+    ComentariosPublicadosComponent,
+    CitasUsurariosComponent
   ],
   imports: [
     CommonModule,

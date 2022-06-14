@@ -29,13 +29,12 @@
               <i class="fa fa-user" aria-hidden="true"></i> ÁREA DE SOCIOS
               </a>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li class="text-center">¿Dónde quieres ir?</li>
                 <li><a  class=" text-white dropdown-item" [routerLink]="['/areasocios']"><i class="fa fa-arrow-right" aria-hidden="true"></i> INICIAR SESIÓN</a></li>
-                <li><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/opciones']"><i class="fa fa-list-ol" aria-hidden="true"></i> OPCIONES</a></li>
-                <li><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/mimascota']"><i class="fa fa-paw" aria-hidden="true"></i> MI MASCOTA</a></li>
-                <li><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/registromascota']"><i class="fa fa-paw" aria-hidden="true"></i><i class="fa fa-plus" aria-hidden="true"></i> REGISTRAR UNA MASCOTA NUEVA</a></li>
-                <li><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/misdatos']" ><i class="fa fa-address-card" aria-hidden="true"></i> MIS DATOS</a></li>
-                <li><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/miscitas']" ><i class="fa fa-calendar" aria-hidden="true"></i> MIS CITAS</a></li>
+                <li *ngIf="mostrar" ><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/opciones']"><i class="fa fa-list-ol" aria-hidden="true"></i> OPCIONES</a></li>
+                <li *ngIf="mostrar" ><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/mimascota']"><i class="fa fa-paw" aria-hidden="true"></i> MI MASCOTA</a></li>
+                <li *ngIf="mostrar" ><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/registromascota']"><i class="fa fa-paw" aria-hidden="true"></i><i class="fa fa-plus" aria-hidden="true"></i> REGISTRAR UNA MASCOTA NUEVA</a></li>
+                <li *ngIf="mostrar" ><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/misdatos']" ><i class="fa fa-address-card" aria-hidden="true"></i> MIS DATOS</a></li>
+                <li *ngIf="mostrar" ><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/miscitas']" ><i class="fa fa-calendar" aria-hidden="true"></i> MIS CITAS</a></li>
                 <li *ngIf="mostrar" ><a class=" text-white dropdown-item" [routerLink]="['']" (click)="cerrarSesion()"><i class="fa fa-times" aria-hidden="true"></i> Cerrar Sesión</a></li>
               </ul>
             </div>
@@ -65,7 +64,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <a class="enlace"  aria-current="page" [routerLink]="['/administrador/inicioAdmin']">Inicio</a>
+            <a class="enlace"  aria-current="page" [routerLink]="['/administrador/inicioAdmin']">INICIO</a>
           </li>
           <li class="nav-item" routerLinkActive="active">
             <a class="enlace" [routerLink]="['/administrador/gestionservicios']">Gestión Servicios</a>

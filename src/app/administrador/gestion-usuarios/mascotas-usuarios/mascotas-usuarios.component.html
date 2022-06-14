@@ -1,3 +1,91 @@
+<div class="container-fluid row text-center" >
+    <h1>MASCOTAS DEL USUARIO {{idUsu}} </h1>
+    <div class="boton">
+        <button class="btn btn-primary volver" (click)="volver()"> Volver a Gestión Usuarios</button><br><br>
+    </div>
 
-<h1>tgrtgr</h1>
+    <div *ngIf="mascotas.length == 0" >
+        <div class="nohay mt-5 mb-5">
+            <h1 class="text-center texto">Ups!</h1>
+            <h1 class="text-center texto">Parece que de momento {{idUsu}} no tiene ninguna mascota registrada</h1><br><br>
+        <div class="icono">
+            <i class="fa fa-exclamation-circle fa-5x mb-5" aria-hidden="true"></i>
+        </div>
+        </div>
+    </div>
 
+
+    <div  *ngIf="mascotas.length > 0" class="container-fluid row text-center mb-5" >
+        
+        <div class="card text-center container-fluid col-lg-3 col-md-6 col-sm-12 col-xs-12 mt-2 mb-2" *ngFor="let mascota of mascotas">
+            
+            <div class="card-body " >
+                <p class="card-text bold"><i class="fa fa-paw" aria-hidden="true"></i>  {{mascota.nombre}}  <i class="fa fa-paw" aria-hidden="true"></i></p>
+                <hr>
+                <p class="card-text">CHIP: {{mascota.chip}}</p>
+                <p class="card-text">ESPECIE: {{mascota.especie}}</p>
+                <p class="card-text">RAZA: {{mascota.raza}}</p>
+                <p class="card-text">PELAJE: {{mascota.pelaje}}</p>
+                <p class="card-text">SEXO: {{mascota.sexo}}</p>
+                <button class="btn borrar m-1" (click)="borrarMascota(mascota.chip)" >Borrar</button>
+                <button type="button" class="btn editar"
+                data-bs-toggle="modal" data-bs-target="#exampleModal" id="myModal" (click)="obtenerDatosMascotaAEditar(mascota.chip)">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4>Editar a la Mascota {{nombreMascota}}</h4>
+            </div>
+            <div class="modal-body">
+              <div class="formulariologin mt-2 mb-2">
+
+                <div class=" mt-2">
+                    <form [formGroup]="miFormularioEditado">
+                        <div class="col-lg-12">
+                          <div class="form-floating mt-2">
+                              <input class="form-control" id="nombreedi" formControlName="nombre" type="text" value="{{nombreMascota}}">
+                              <span class="form-text text-danger" *ngIf="miFormularioEditado.controls['nombre'].errors 
+                              && miFormularioEditado.controls['nombre'].touched">El nombre no es correcto</span>
+                              <label for="nombreedi" class="text-dark">Nombre</label>
+                          </div>
+                          <div class="form-floating mt-2">
+                            <input class="form-control" id="especieedi" formControlName="especie"type="text" value="{{especieMascota}}">
+                            <span class="form-text text-danger" *ngIf="miFormularioEditado.controls['especie'].errors 
+                            && miFormularioEditado.controls['especie'].touched">La especie no es correcta</span>
+                            <label for="especiesedi" class="text-dark">Especie</label>
+                          </div>
+                          <div class="form-floating mt-2">
+                            <input class="form-control" id="pelajeedi" formControlName="pelaje" type="text" value="{{pelajeMascota}}">
+                            <span class="form-text text-danger" *ngIf="miFormularioEditado.controls['pelaje'].errors 
+                            && miFormularioEditado.controls['pelaje'].touched">El pelaje no es correcto</span>
+                            <label for="pelajeedi" class="text-dark">Pelaje</label>
+                          </div>
+                          <div class="form-floating mt-2">
+                            <input class="form-control" id="sexoedi" formControlName="sexo" type="text" value="{{sexoMascota}}">
+                            <span class="form-text text-danger" *ngIf="miFormularioEditado.controls['sexo'].errors 
+                            && miFormularioEditado.controls['sexo'].touched">el sexo no es correcto</span>
+                            <label for="sexoedi" class="text-dark">Sexo</label>
+                          </div>
+                          <div class="form-floating mt-2">
+                            <input class="form-control" id="razaedi" formControlName="raza" type="text" value="{{razaMascota}}">
+                            <span class="form-text text-danger" *ngIf="miFormularioEditado.controls['raza'].errors 
+                            && miFormularioEditado.controls['raza'].touched">Raza Mascota</span>
+                            <label for="razaedi" class="text-dark">Raza</label>
+                          </div><br>
+                          <button class="btn editar" (click)="editarMascota(chipMascota)" [disabled]="miFormularioEditado.invalid" type="submit">Editar Mascota</button>
+                          </div>
+                    </form>
+                </div>  
+            </div>
+            </div>      
+        </div>
+    </div>
+</div>

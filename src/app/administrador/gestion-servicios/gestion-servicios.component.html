@@ -1,7 +1,7 @@
 
 
 
-<div class="container-fluid">
+<div class="container-fluid text-center">
   <h1>GESTIÓN DE SERVICIOS</h1>
 
   <div class="boton">
@@ -11,14 +11,28 @@
     </button><br><br>
   </div>
 
-  <table class="table">
+  </div>
+
+  <div *ngIf="listaservicios.length == 0" >
+    <div class="nohaycomentario mt-5 mb-5">
+        <h1 class="text-center texto">Ups!</h1>
+        <h1 class="text-center texto">Parece que de momento no hay ningún servicio registradp en el sistema.</h1><br><br>
+      <div class="icono">
+        <i class="fa fa-exclamation-circle fa-5x mb-5" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid text-center" *ngIf="listaservicios.length > 0" >
+
+  <table class="table mb-5">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Nombre</th>
           <th scope="col">Descripción</th>
-          <th></th>
-          <th></th>
+          <th scope="col"><i class="fa fa-trash" aria-hidden="true"></i></th>
+          <th scope="col"><img class="iconoeditar" src="../../../assets/img/lapiz.png" alt=""></th>
         </tr>
       </thead>
       <tbody>
@@ -26,13 +40,14 @@
           <th scope="row">{{serv.referencia}}</th>
           <td>{{serv.nombre}}</td>
           <td>{{serv.descripcion}}</td>
+          <td><button type="button" class="btn btn-primary borrar" (click)="borrarServicio(serv.referencia)">Borrar</button></td>
           <td>
             <button type="button" class="btn btn-primary editar" 
             data-bs-toggle="modal" data-bs-target="#exampleModal" id="myModal" (click)="obtenerDatosEdicion(serv.referencia)">
              Editar
             </button>
           </td>
-          <td><button type="button" class="btn btn-primary borrar" (click)="borrarServicio(serv.referencia)">Borrar</button></td>
+          
         </tr>
       </tbody>
   </table>
@@ -62,7 +77,7 @@
                       <label for="descripcion" class="text-dark">Descripción</label>
                     </div>
                     <br>
-                    <button class="btn btn-primary" (click)="editarServicio(referenciaServicioAEditar)" [disabled]="miFormulario.invalid" type="submit" routerLink="/gestionservicios" >Editar servicio</button>
+                    <button class="btn editar" (click)="editarServicio(referenciaServicioAEditar)" [disabled]="miFormulario.invalid" type="submit" routerLink="/gestionservicios" >Editar servicio</button>
                   </form>
                 </div>  
             </div>
@@ -94,7 +109,7 @@
                       <label for="des" class="text-dark">Descripción</label>
                     </div>
                     <br>
-                    <button class="btn btn-primary" (click)="publicarServicio()" [disabled]="miFormularioPublicado.invalid" type="submit">Publicar nuevo servicio</button>
+                    <button class="btn publicarservicio" (click)="publicarServicio()" [disabled]="miFormularioPublicado.invalid" type="submit">Publicar nuevo servicio</button>
                   </form>
                 </div>  
             </div>

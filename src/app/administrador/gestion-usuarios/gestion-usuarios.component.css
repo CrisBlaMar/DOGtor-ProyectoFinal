@@ -48,16 +48,46 @@ input{
     background-color: rgb(232, 59, 59);
 }
 .editar{
-    background-color: #999966;
+    background-color: #60602b;
     color: white;
 }
 .editar:hover{
-    background-color: #c6c685;
+    background-color: #979748;
 }
 .mascotas{
-    background-color: #E9BB97;
-}
-.mascotas:hover{
     background-color: #ba855c;
     color: white;
+}
+.mascotas:hover{
+    background-color: #814d26;
+    color: white;
+}
+.citas{
+    background-color: #6a8154;
+    color: white;
+}
+.citas:hover{
+    background-color: #485839;
+    color: white;
+    
+}
+.iconoeditar{
+    width: 15px;
+}
+table{
+    background-color: #FAE4CF;
+    border-color: #b07f51;
+}
+th{
+    color: #000000;
+}
+.nohay{
+    background-color:#FAE4CF;
+    width: 60%;
+    margin: auto;
+    border-radius: 15px;
+}
+.icono{
+    text-align: center;
+
 }

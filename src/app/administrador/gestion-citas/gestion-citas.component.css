@@ -1,0 +1,52 @@
+.nohay{
+  background-color:#FAE4CF;
+  width: 60%;
+  margin: auto;
+  border-radius: 15px;
+}
+.icono{
+  text-align: center;
+
+}
+.borrar{
+    background-color: brown;
+    color: white;
+}
+.borrar:hover{
+    background-color: rgb(232, 59, 59);
+}
+.editar{
+    background-color: #999966;
+    color: white;
+}
+.editar:hover{
+    background-color: #c6c685;
+}
+.boton{
+    text-align: right;
+}
+.volver{
+    text-align: right;
+    background-color: #E9BB97;
+    border-color: #E9BB97;
+    color: black;
+}
+.volver:hover{
+    background-color: #a07351;
+    border-color: #a07351;
+    color: white;
+}
+.container-fluid{
+    padding-right:0px;
+}
+.card{
+    background-color: #FAE4CF;
+    border-radius: 10%;
+}
+.bold{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+i{
+    color: #999966;
+}

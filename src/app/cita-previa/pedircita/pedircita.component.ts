@@ -19,6 +19,8 @@ export class PedircitaComponent implements OnInit {
 
   mascotas : Mascota [] = [];
   masco!: Mascota;
+
+  fechaActual = new Date();
   
 
   citaPrevia: FormGroup = this.form.group({

@@ -8,6 +8,7 @@ import { GestionComentariosComponent } from './gestion-comentarios/gestion-comen
 import { MascotasUsuariosComponent } from './gestion-usuarios/mascotas-usuarios/mascotas-usuarios.component';
 import { ComentariosPublicadosComponent } from './comentarios-publicados/comentarios-publicados.component';
 import { GuardAdmin } from '../areasocios/guardAdmin.service';
+import { CitasUsurariosComponent } from './gestion-usuarios/citas-usurarios/citas-usurarios.component';
 const routes: Routes = [
   {
     path:'', component: InicioComponent, canActivate: [GuardAdmin]
@@ -19,7 +20,8 @@ const routes: Routes = [
 { path: 'gestioncitas', component: GestionCitasComponent,canActivate: [GuardAdmin]},
 { path: 'gestionservicios', component: GestionServiciosComponent,canActivate: [GuardAdmin]},
 { path: 'gestioncomentarios', component: GestionComentariosComponent,canActivate: [GuardAdmin]},
-{ path: 'gestionusuarios/mascotasusuarios', component: MascotasUsuariosComponent,canActivate: [GuardAdmin]},
+{ path: 'gestionusuarios/mascotasusuarios/:email', component: MascotasUsuariosComponent,canActivate: [GuardAdmin]},
+{ path: 'gestionusuarios/citasusuarios/:email', component: CitasUsurariosComponent,canActivate: [GuardAdmin]},
 { path: 'comentariospubli', component: ComentariosPublicadosComponent, canActivate: [GuardAdmin]}
 
 ];

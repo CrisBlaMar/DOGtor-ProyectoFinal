@@ -34,8 +34,44 @@ table{
     border-color: #b07f51;
 }
 th{
-    color: #b07f51;
+    color: #000000;
+    text-align: center;
 }
 .boton{
     text-align: right;
+}
+.iconoeditar{
+    width: 15px;
+    
+}
+.modal-content{
+    background-color: #FAE4CF;
+}
+input{
+    background-color: #FAE4CF;
+}
+.publicarservicio{
+    background-color: #999966;
+    color: white;
+}
+.publicarservicio:hover{
+    background-color: #d6d69a;
+    color: black;
+}
+.editar{
+    background-color: #60602b;
+    color: white;
+}
+.editar:hover{
+    background-color: #979748;
+}
+.nohay{
+    background-color:#FAE4CF;
+    width: 60%;
+    margin: auto;
+    border-radius: 15px;
+}
+.icono{
+    text-align: center;
+
 }

@@ -14,10 +14,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./gestion-usuarios.component.css']
 })
 export class GestionUsuariosComponent implements OnInit {
+  
 
   constructor(private form : FormBuilder, private administradorService : AdministradorService
     , private usuarioservice : UsuarioService, private emailservice : EmailValidacionServices,
     private router : Router) { }
+
+    
 
   
 

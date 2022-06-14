@@ -30,7 +30,7 @@ export class MimascotaComponent implements OnInit {
       error: resp => {
         Swal.fire({
           title: 'Error', 
-          text: resp.error.mensaje, 
+          text: resp.error.message, 
           icon: 'error',
           color: '#3d3d1b',
           background: '#FAE4CF',

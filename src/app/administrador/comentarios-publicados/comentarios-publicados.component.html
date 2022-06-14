@@ -1,13 +1,31 @@
-<div class="row mt-4 container-fluid">
-    <div class="comentario container-fluid col-lg-3 col-md-3 col-sm-12 mt-4 mb-4" style="width: 18rem;" *ngFor="let comen of comentarios">
-        <div >
-            <div class="row container-fluid botones mt-3 mb-2">
-                <button id="borrar" class="btn btn-secondary" (click)="borrarComentario(comen.id)">Borrar</button>
-            </div>
-            <h5 class="mt-1">{{comen.titulo}}</h5>
-            <hr>
-            <h6 class="mb-2">{{comen.usuario}}</h6>
-            <p class="contenido">{{comen.contenido}}</p>
+
+  <div class="container-fluid row text-center" >
+    <h1>COMENTARIOS PUBLICADOS</h1>
+
+    <div *ngIf="comentarios.length == 0" >
+        <div class="nohay mt-5 mb-5">
+            <h1 class="text-center texto">Ups!</h1>
+            <h1 class="text-center texto">Parece que de momento no hay ningun comentario publicado registrado en el sistema</h1><br><br>
+        <div class="icono">
+            <i class="fa fa-exclamation-circle fa-5x mb-5" aria-hidden="true"></i>
+        </div>
         </div>
     </div>
-  </div>
+
+
+    <div  *ngIf="comentarios.length > 0" class="container-fluid row text-center mb-5" >
+        
+        <div class="card text-center container-fluid col-lg-3 col-md-6 col-sm-12 col-xs-12 mt-2 mb-2" *ngFor="let comen of comentarios">
+            
+            <div class="card-body " >
+                <button class="btn borrar m-1" >Borrar</button>
+                <hr>
+                <p class="card-text bold">{{comen.titulo}}</p>
+                <hr>
+                <p class="card-text usuario">{{comen.usuario}}</p>
+                <p class="card-text">{{comen.contenido}}</p>
+                
+            </div>
+        </div>
+    </div>
+</div>

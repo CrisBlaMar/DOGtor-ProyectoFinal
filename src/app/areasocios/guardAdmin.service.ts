@@ -31,10 +31,12 @@ export class GuardAdmin implements CanActivate{
                 ),
                 catchError (err =>{
                     Swal.fire({
-                        title: '¡ERROR!',
-                        text: 'No puede acceder. Debe iniciar sesión como Administrador',
-                        icon: 'error'
-                    });
+                        title: 'Error', 
+                        text: 'No puede acceder. Debe iniciar sesión como Administrador', 
+                        icon: 'error',
+                        color: '#3d3d1b',
+                        background: '#FAE4CF',
+                        showConfirmButton: false,});
                     this.router.navigateByUrl('');
                     acceso = false;
                     return of(acceso)

@@ -58,7 +58,7 @@ export class RegistromascotaComponent implements OnInit {
       error : err => {
         Swal.fire({
           title: 'Error', 
-          text: err.error.mensaje, 
+          text: err.error.message, 
           icon: 'error',
           color: '#3d3d1b',
           background: '#FAE4CF',

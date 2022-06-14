@@ -1,0 +1,78 @@
+<div class="container-fluid row text-center" >
+    <h1>CITAS DEL USUARIO {{idUsu}} </h1>
+    <div class="boton">
+        <button class="btn btn-primary volver mt-2" (click)="volver()"> Volver a Gestión Usuarios</button><br><br>
+    </div>
+    <div class="boton">
+        <button type="button" class="btn btn-primary volver"
+        data-bs-toggle="modal" data-bs-target="#example" id="mymo"><i class="fa fa-plus" aria-hidden="true"></i>  Nueva Cita</button><br><br>
+    </div>
+
+    <div *ngIf="citas.length == 0" >
+        <div class="nohay mt-5 mb-5">
+            <h1 class="text-center texto">Ups!</h1>
+            <h1 class="text-center texto">Parece que de momento {{idUsu}} no tiene ninguna cita registrada</h1><br><br>
+        <div class="icono">
+            <i class="fa fa-exclamation-circle fa-5x mb-5" aria-hidden="true"></i>
+        </div>
+        </div>
+    </div>
+
+
+    <div  *ngIf="citas.length > 0" class="container-fluid row text-center mb-5" >
+        
+        <div class="card text-center container-fluid col-lg-3 col-md-6 col-sm-12 col-xs-12 mt-2 mb-2" *ngFor="let cita of citas">
+            
+            <div class="card-body " >
+                <p class="card-text bold">{{cita.mascota.nombre}}</p>
+                <hr>
+                <p class="card-text">IDENTIFICADOR: {{cita.id}}</p>
+                <p class="card-text">FECHA: {{cita.fecha}}</p>
+                <button class="btn borrar m-1" (click)="borrarCita(cita.id)">Borrar</button>
+            </div>
+            <!--<form class="contacto" [formGroup]="mensaje">
+                <div class="form-group">
+                    <input class="mt-3" type="text" class="form-control" formControlName="to"><br>
+                </div><br>
+            </form>-->
+        </div>
+    </div>
+
+   
+
+</div>
+
+
+<div class="modal fade" id="example" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4>Solicitar nueva cita</h4>
+            </div>
+            <div class="modal-body">
+              <div class="formulariologin mt-2 mb-2">
+
+                <div class=" mt-2">
+                    <form class="citaprevia" [formGroup]="citaPrevia">
+                        <div class="form-group">
+                            <label for="mascota"><i class="fa fa-paw" aria-hidden="true"></i><p>Selecciona tu mascota: </p>
+                            </label><br>
+                            <select name="mascota" formControlName="mascota">
+                                <option value={{pet.chip}} *ngFor="let pet of mascotas">{{pet.nombre}}</option> 
+                            </select>
+                        </div><br>
+                        <div class="form-group">
+                            <label for="fecha" ><i class="fa fa-time"></i><p>Selecciona una fecha </p> </label><br>
+                            <input min="2022-06-12 10:00" type="datetime-local" name="fecha" id="fecha" formControlName="fecha"/>
+                        </div><br>
+                        <div class="btn">
+                            <button class="button" type="submit" (click)="realizarCita()">Pedir Cita</button>
+                        </div>
+                    </form>
+                    
+                </div>  
+            </div>
+            </div>      
+        </div>
+    </div>
+</div>

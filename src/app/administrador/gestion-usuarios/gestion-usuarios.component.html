@@ -10,23 +10,52 @@
         Publicar nuevo Usuario
         </button><br><br>
     </div>
-        <div class="card container-fluid col-lg-3 col-md-6 col-sm-12 col-xs-12 mt-2 mb-2" *ngFor="let usu of usuariosUsers">
-            
-            <div class="card-body" >
-                <img src="../../../assets/img/usuario.png" alt=""><br><br>
-                <p class="card-text"><i class="fa fa-user" aria-hidden="true"></i> {{usu.nombre}}</p>
-                <p class="card-text"><i class="fa fa-user-circle" aria-hidden="true"></i> {{usu.apellidos}}</p>
-                <p class="card-text"><i class="fa fa-envelope" aria-hidden="true"></i> {{usu.email}}</p>
-                <p class="card-text"><i class="fa fa-id-card" aria-hidden="true"></i> {{usu.dni}}</p>
-                <p class="card-text"><i class="fa fa-phone" aria-hidden="true"></i> {{usu.telefono}}</p>
-                <button class="btn borrar m-1" (click)="borrarUsuario(usu.email)">Borrar</button>
-                <button type="button" class="btn editar" 
-                    data-bs-toggle="modal" data-bs-target="#exampleModal" id="myModal" (click)="obtenerDatosEdicion(usu.email)">
-                    Editar
-                </button><br>
-                <button class="btn mascotas" routerLink="mascotasusuarios">Ver mascotas</button>
-            </div>
+    </div>
+
+    <div *ngIf="usuariosUsers.length == 0" >
+      <div class="nohaycomentario mt-5 mb-5">
+          <h1 class="text-center texto">Ups!</h1>
+          <h1 class="text-center texto">Parece que de momento no hay ningún usuario registrado en el sistema.</h1><br><br>
+        <div class="icono">
+          <i class="fa fa-exclamation-circle fa-5x mb-5" aria-hidden="true"></i>
         </div>
+      </div>
+    </div>
+
+  <div class="container-fluid row text-center" *ngIf="usuariosUsers.length > 0">
+      <table class="table col-lg-12 col-md-12 col-sm-6 col-xs-12 mt-2 mb-5">
+        <thead>
+          <tr>
+            <th title="Email" scope="col">Email</th>
+            <th title="Nombre" scope="col">Nombre</th>
+            <th title="Apellidos" scope="col">Apellidos</th>
+            <th title="DNI" scope="col">DNI</th>
+            <th title="Teléfono" scope="col">Teléfono</th>
+            <th title="Borrar" scope="col"><i class="fa fa-trash" aria-hidden="true"></i></th>
+            <th title="Editar" scope="col"><img class="iconoeditar" src="../../../assets/img/lapiz.png" alt=""></th>
+            <th title="Ver Mascotas" scope="col"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp; <i class="fa fa-paw" aria-hidden="true"></i></th>
+            <th title="Ver Citas" scope="col"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp; <i class="fa fa-calendar" aria-hidden="true"></i></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let us of usuariosUsers">
+            <th scope="row">{{us.email}}</th>
+            <td>{{us.nombre}}</td>
+            <td>{{us.apellidos}}</td>
+            <td>{{us.dni}}</td>
+            <td>{{us.telefono}}</td>
+            <td><button class="btn borrar m-1" (click)="borrarUsuario(us.email)">Borrar</button></td>
+            <td><button type="button" class="btn editar" 
+              data-bs-toggle="modal" data-bs-target="#exampleModal" id="myModal" (click)="obtenerDatosEdicion(us.email)">
+              Editar
+            </button></td>
+            <td><button class="btn mascotas m-1" routerLink="mascotasusuarios/{{us.email}}">Ver Mascotas</button></td>
+            <td><button class="btn citas" routerLink="citasusuarios/{{us.email}}">Ver Citas</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+
     </div>
 
   <div class="modal fade" id="examplemo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
