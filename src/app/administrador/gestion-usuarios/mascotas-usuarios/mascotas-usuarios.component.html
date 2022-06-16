@@ -3,6 +3,10 @@
     <div class="boton">
         <button class="btn btn-primary volver" (click)="volver()"> Volver a Gestión Usuarios</button><br><br>
     </div>
+    <div class="boton">
+        <button type="button" class="btn btn-primary volver"
+        data-bs-toggle="modal" data-bs-target="#example" id="mymo"><i class="fa fa-plus" aria-hidden="true"></i>  Nueva Mascota</button><br><br>
+    </div>
 
     <div *ngIf="mascotas.length == 0" >
         <div class="nohay mt-5 mb-5">
@@ -27,9 +31,10 @@
                 <p class="card-text">RAZA: {{mascota.raza}}</p>
                 <p class="card-text">PELAJE: {{mascota.pelaje}}</p>
                 <p class="card-text">SEXO: {{mascota.sexo}}</p>
-                <button class="btn borrar m-1" (click)="borrarMascota(mascota.chip)" >Borrar</button>
+                <button class="btn borrar" (click)="borrarMascota(mascota.chip)" >Borrar</button>
                 <button type="button" class="btn editar"
                 data-bs-toggle="modal" data-bs-target="#exampleModal" id="myModal" (click)="obtenerDatosMascotaAEditar(mascota.chip)">Editar</button>
+                <button type="button" class="btn ver" routerLink="mascota/{{mascota.chip}}/historial">Historial</button>
             </div>
         </div>
     </div>
@@ -83,6 +88,56 @@
                           <button class="btn editar" (click)="editarMascota(chipMascota)" [disabled]="miFormularioEditado.invalid" type="submit">Editar Mascota</button>
                           </div>
                     </form>
+                </div>  
+            </div>
+            </div>      
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="example" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4>Añadir nueva mascota</h4>
+            </div>
+            <div class="modal-body">
+              <div class="formulariologin mt-2 mb-2">
+
+                <div class=" mt-2">
+                    <form [formGroup]="miMascota" (ngSubmit)="hacerRegistro()">
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre..." required><br>
+                            <span class="form-text text-danger" *ngIf="miMascota.controls['nombre'].errors && miMascota.controls['nombre'].touched">Debes introducir un nombre válido</span>
+            
+                            <input class="mt-3" type="text" class="form-control" formControlName="especie" placeholder="Especie..." required><br>
+                            <span class="form-text text-danger" *ngIf="miMascota.controls['especie'].errors && miMascota.controls['especie'].touched">Debes introducir una especie válida</span>
+            
+                            <input class="mt-3" type="text" class="form-control" formControlName="pelaje" placeholder="Pelaje..." required><br>
+                            <span class="form-text text-danger" *ngIf="miMascota.controls['pelaje'].errors && miMascota.controls['pelaje'].touched">Debes introducir un pelaje válido</span>
+            
+                            <input class="mt-3" type="text" class="form-control" formControlName="raza" placeholder="Raza..." required><br>
+                            <span class="form-text text-danger" *ngIf="miMascota.controls['raza'].errors && miMascota.controls['raza'].touched">Debes introducir una raza válida</span><br>
+                            <div class="text-center">
+                                <label for="sexo" class="inputSexo">Sexo: </label> <br>
+                                <label class="mt-1" for="valor1">Hembra</label>
+                                <input class="mt-3" type="radio"  value="Hembra" formControlName="sexo" id="valor1" checked>
+                                <br>
+                                <label for="valor2">Macho</label>
+                                <input class="mt-3" type="radio"  value="Macho" formControlName="sexo" id="valor2" >
+                                <br>
+                                <label for="valor3">Otro</label>
+                                <input class="mt-3" type="radio"  value="Otro" formControlName="sexo" id="valor3" >
+                                <span class="form-text text-danger" *ngIf="miMascota.controls['sexo'].errors && miMascota.controls['sexo'].touched">Debes marcar una de las opciones</span>
+                            </div>
+            
+                            <button class="mt-5 btn text-center editar" type="submit" [disabled]="miMascota.invalid">
+                                Añadir Mascota
+                            </button>
+                        </div>
+                    </form>
+                    
                 </div>  
             </div>
             </div>      

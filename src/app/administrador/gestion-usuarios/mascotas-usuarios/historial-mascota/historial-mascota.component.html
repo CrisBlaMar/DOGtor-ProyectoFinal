@@ -1,0 +1,99 @@
+<div class="container-fluid row text-center" >
+    <h1>HISTORIAL DE LA MASCOTA {{chipMascota}}</h1>
+    <div class="boton mt-5 " >
+        <button class="btn btn-primary volver" (click)="volver()"> Volver a Mis Mascotas</button><br><br>
+    </div>
+    
+    
+
+    <div *ngIf="historial == null " >
+        <div class="nohay mt-5 mb-5">
+            <h1 class="text-center texto">Ups!</h1>
+            <h1 class="text-center texto">Parece que de momento la mascota con chip {{chipMascota}} no tiene datos en su Historial Clínico</h1><br><br>
+        <div class="icono">
+            <i class="fa fa-exclamation-circle fa-5x mb-5" aria-hidden="true"></i>
+        </div>
+
+        <div class="text-center mt-1 mb-5" >
+            <button type="button" class="btn addhis"
+                data-bs-toggle="modal" data-bs-target="#exampleModal" id="myModal"> <i class="fa fa-plus" aria-hidden="true"></i>  Comenzar un Historial Clínico</button>
+             <br><br>
+        </div>
+
+        </div>
+    </div>
+
+
+    <div  *ngIf="historial != null" class="container-fluid row text-center mb-5 mt -5" >
+        
+        <div class="card text-center container-fluid col-lg-8 col-md-12 col-sm-12 col-xs-12 mt-2 mb-2">
+            
+            <div class="card-body " >
+                <h2 class="card-text bold"> HISTORIAL CLÍNICO DE CHIP: {{chipMascota}}</h2>
+                <i class="fa fa-heartbeat fa-5x" aria-hidden="true"></i>
+                <hr>
+                <p class="card-text">{{historial.contenido}}</p>
+            </div>
+            <div >
+                <button class="btn btn-primary addhis" type="button"
+                data-bs-toggle="modal" data-bs-target="#example" id="myMo" (click)="obtenerDatoshistorial(historial.id)"> Editar historial</button><br><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4>Nuevo historial clínico</h4>
+            </div>
+            <div class="modal-body">
+              <div class="formulariologin mt-2 mb-2">
+
+                <div class=" mt-2">
+                    <form [formGroup]="nuevoHistorial">
+                        <div class="col-lg-12">
+                          <div class="container-fluid mt-2">
+                                <label for="contenido" class="text-dark">Contenido:</label>
+                                <textarea class="form-control" id="contenido" formControlName="contenido" type="text"></textarea> <br>
+                                <button class="btn addhistorial position-absolute bottom-1 end-30" (click)="addhistorialMascota()" type="submit">Añadir historial</button>
+                          </div><br>
+                          
+                          </div>
+                    </form>
+                </div>  
+            </div>
+            </div>      
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="example" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4>Editar historial clínico</h4>
+            </div>
+            <div class="modal-body">
+              <div class="formulariologin mt-2 mb-2">
+
+                <div class="mt-2">
+                    <form [formGroup]="edicionHistorial">
+                        <div class="col-lg-12 formu">
+                            <div class="container-fluid mt-2">
+                                <label for="cont" class="text-dark">Contenido: </label>
+                                <textarea class="form-control" id="cont" formControlName="contenido" type="text" value="{{contenido}}"></textarea>
+                                <button class="btn add position-absolute bottom-1 end-30" (click)="editarHistorial()" type="submit">Añadir historial</button>
+                            </div><br>
+                        </div>
+                    </form>
+                </div>  
+            </div>
+            </div>      
+        </div>
+    </div>
+</div>

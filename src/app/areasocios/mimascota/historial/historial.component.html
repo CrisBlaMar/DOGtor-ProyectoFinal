@@ -1,0 +1,30 @@
+<div class="container-fluid row text-center" >
+    <h1>HISTORIAL DE LA MASCOTA {{chipMascota}}</h1>
+    <div class="boton mt-5 mb-5" >
+        <button class="btn btn-primary volver" (click)="volver()"> Volver a Mis Mascotas</button><br><br>
+    </div>
+
+    <div *ngIf="historial == null" >
+        <div class="nohay mt-5 mb-5">
+            <h1 class="text-center texto">Ups!</h1>
+            <h1 class="text-center texto">Parece que de momento la mascota con chip {{chipMascota}} no tiene datos en su Historial Clínico</h1><br><br>
+        <div class="icono">
+            <i class="fa fa-exclamation-circle fa-5x mb-5" aria-hidden="true"></i>
+        </div>
+        </div>
+    </div>
+
+
+    <div  *ngIf="historial != null" class="container-fluid row text-center mb-5 mt -5" >
+        
+        <div class="card text-center container-fluid col-lg-8 col-md-12 col-sm-12 col-xs-12 mt-2 mb-2">
+            
+            <div class="card-body " >
+                <h2 class="card-text bold"> HISTORIAL CLÍNICO DE CHIP: {{chipMascota}}</h2>
+                <i class="fa fa-heartbeat fa-5x" aria-hidden="true"></i>
+                <hr>
+                <p class="card-text">{{historial.contenido}}</p>
+            </div>
+        </div>
+    </div>
+</div>

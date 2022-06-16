@@ -38,7 +38,7 @@ button:hover{
 }
 .card{
     border-radius: 30px;
-    background-color: #E9BB97;
+    background-color:#FAE4CF;
 }
 p{
     font-size: 16px;
@@ -49,4 +49,11 @@ p{
     .nohaymascota{
         width: 100%;
     }
+}
+
+.modal-content{
+    background-color: #FAE4CF;
+}
+input{
+    background-color: #FAE4CF;
 }

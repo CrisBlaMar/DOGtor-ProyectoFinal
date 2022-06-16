@@ -55,18 +55,18 @@
                 <div class=" mt-2">
                     <form class="citaprevia" [formGroup]="citaPrevia">
                         <div class="form-group">
-                            <label for="mascota"><i class="fa fa-paw" aria-hidden="true"></i><p>Selecciona tu mascota: </p>
+                            <label for="mascota"><p>Selecciona tu mascota: </p>
                             </label><br>
-                            <select name="mascota" formControlName="mascota">
+                            <select name="mascota" formControlName="mascota" aria-placeholder="Selecciona">
                                 <option value={{pet.chip}} *ngFor="let pet of mascotas">{{pet.nombre}}</option> 
                             </select>
                         </div><br>
                         <div class="form-group">
-                            <label for="fecha" ><i class="fa fa-time"></i><p>Selecciona una fecha </p> </label><br>
+                            <label for="fecha" ><p>Selecciona una fecha </p> </label><br>
                             <input min="2022-06-12 10:00" type="datetime-local" name="fecha" id="fecha" formControlName="fecha"/>
                         </div><br>
                         <div class="btn">
-                            <button class="button" type="submit" (click)="realizarCita()">Pedir Cita</button>
+                            <button class="btn botoncita" type="submit" (click)="realizarCita()">Pedir Cita</button>
                         </div>
                     </form>
                     

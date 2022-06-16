@@ -17,8 +17,7 @@ export class GestionUsuariosComponent implements OnInit {
   
 
   constructor(private form : FormBuilder, private administradorService : AdministradorService
-    , private usuarioservice : UsuarioService, private emailservice : EmailValidacionServices,
-    private router : Router) { }
+    , private usuarioservice : UsuarioService, private emailservice : EmailValidacionServices,) { }
 
     
 
@@ -181,10 +180,10 @@ export class GestionUsuariosComponent implements OnInit {
    */
    hacerRegistro (){
     let usuario : Usuario = this.miFormulario.value;
-    if(this.miFormulario.valid){
       this.usuarioservice.registro(usuario)
       .subscribe({
         next: (resp => {
+          this.ngOnInit();
           Swal.fire({
             icon: 'success',
             title: '¡El nuevo usuario ha sido registrado!',
@@ -193,7 +192,7 @@ export class GestionUsuariosComponent implements OnInit {
             background: '#FAE4CF'
           })
           this.miFormulario.reset();
-          this.usuariosUsers.push(resp);
+          
           
         }),
         error : err => {
@@ -208,7 +207,6 @@ export class GestionUsuariosComponent implements OnInit {
           
         }
       });
-    }
   }
 
   campoNoValido( campo: string ) {

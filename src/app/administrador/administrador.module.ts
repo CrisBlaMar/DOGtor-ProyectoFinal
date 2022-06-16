@@ -13,6 +13,7 @@ import { ComentariosPublicadosComponent } from './comentarios-publicados/comenta
 import { GuardAdmin } from '../areasocios/guardAdmin.service';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { CitasUsurariosComponent } from './gestion-usuarios/citas-usurarios/citas-usurarios.component';
+import { HistorialMascotaComponent } from './gestion-usuarios/mascotas-usuarios/historial-mascota/historial-mascota.component';
 
 
 
@@ -25,7 +26,8 @@ import { CitasUsurariosComponent } from './gestion-usuarios/citas-usurarios/cita
     GestionServiciosComponent,
     MascotasUsuariosComponent,
     ComentariosPublicadosComponent,
-    CitasUsurariosComponent
+    CitasUsurariosComponent,
+    HistorialMascotaComponent
   ],
   imports: [
     CommonModule,

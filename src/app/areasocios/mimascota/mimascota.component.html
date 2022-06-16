@@ -14,14 +14,17 @@ no tienes ninguna mascota registrada</p>
 
 
 <div class="container row" >
-    <div class="card text-center col-lg-3 col-md-6 col-sm-12 col-xs-12 mt-2 m-2" *ngFor="let pet of mascota">
-        <img src="./assets/img/mimascotapng.png" class="card-img-top" alt="imagen png de una ilustración de un gato y un perro">
-        <div class="card-body">
-            <p class="card-title">{{pet.nombre}}</p>
-            <p class="card-text">{{pet.raza}}</p>
-            <p class="card-text">{{pet.pelaje}}</p>
-            <p class="card-text">{{pet.especie}}</p>
-            <p class="card-text">{{pet.sexo}}</p>
+    <div class="card text-center container-fluid col-lg-3 col-md-6 col-sm-12 col-xs-12 mt-2 mb-2" *ngFor="let mascota of mascota">
+            
+        <div class="card-body " >
+            <p class="card-text bold"><i class="fa fa-paw" aria-hidden="true"></i>  {{mascota.nombre}}  <i class="fa fa-paw" aria-hidden="true"></i></p>
+            <hr>
+            <p class="card-text">CHIP: {{mascota.chip}}</p>
+            <p class="card-text">ESPECIE: {{mascota.especie}}</p>
+            <p class="card-text">RAZA: {{mascota.raza}}</p>
+            <p class="card-text">PELAJE: {{mascota.pelaje}}</p>
+            <p class="card-text">SEXO: {{mascota.sexo}}</p>
+            <button type="button" class="btn editar" routerLink="{{mascota.chip}}/historial">Ver Historial</button>
         </div>
     </div>
 </div>
@@ -33,3 +36,4 @@ no tienes ninguna mascota registrada</p>
 <div class="boton">
     <button class="btn mt-4 mb-4" type="button" routerLink="/areasocios/opciones">Regresar a Opciones</button>
 </div>
+

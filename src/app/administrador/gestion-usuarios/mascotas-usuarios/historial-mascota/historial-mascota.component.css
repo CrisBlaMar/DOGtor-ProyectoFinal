@@ -1,0 +1,85 @@
+.container-fluid{
+    padding-right:0px;
+}
+.card{
+    background-color: #FAE4CF;
+}
+.bold{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+i{
+    color: #999966;
+}
+.boton{
+    text-align: right;
+}
+.volver{
+    text-align: right;
+    background-color: #E9BB97;
+    border-color: #E9BB97;
+    color: black;
+}
+.volver:hover{
+    background-color: #a07351;
+    border-color: #a07351;
+    color: white;
+}
+.addhis{
+    text-align: center;
+    background-color:#999966;
+    border-color: #999966;
+    color: white;
+}
+.addhis:hover{
+    background-color:#c7c785;
+    border-color: #c7c785;
+    color: black;
+
+}
+.nohay{
+    background-color:#FAE4CF;
+    width: 60%;
+    margin: auto;
+    border-radius: 15px;
+}
+.icono{
+    text-align: center;
+
+}
+.modal-content{
+    background-color: #FAE4CF;
+}
+input{
+    background-color: #FAE4CF;
+}
+.addhistorial{
+    background-color: #999966;
+    color: white;
+}
+.addhistorial:hover{
+    background-color: #c6c685;
+    color: black;
+}
+.add{
+    background-color: #999966;
+    color: white;
+    
+}
+.add:hover{
+    background-color: #c6c685;
+    color: black;
+}
+.fa-plus{
+    color: black;
+}
+textarea{
+    width: 98%;
+    height: 300px; 
+}
+.formu{
+    height: 400px;
+}
+.fa-exclamation-circle{
+    color: balck;
+}

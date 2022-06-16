@@ -20,8 +20,7 @@
               <p class="card-text bold">{{cita.mascota.nombre}}</p>
               <hr>
               <p class="card-text">FECHA: {{cita.fecha}}</p>
-              <button class="btn borrar m-1" >Borrar</button>
-              <button type="button" class="btn editar"> Editar </button>
+              <button class="btn borrar m-1" (click)="borrarCita(cita.id)" >Borrar</button>
           </div>
       </div>
   </div>

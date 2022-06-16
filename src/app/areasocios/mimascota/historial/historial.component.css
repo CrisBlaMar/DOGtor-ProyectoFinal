@@ -1,0 +1,37 @@
+.container-fluid{
+    padding-right:0px;
+}
+.card{
+    background-color: #FAE4CF;
+}
+.bold{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+i{
+    color: #999966;
+}
+.boton{
+    text-align: right;
+}
+.volver{
+    text-align: right;
+    background-color: #E9BB97;
+    border-color: #E9BB97;
+    color: black;
+}
+.volver:hover{
+    background-color: #a07351;
+    border-color: #a07351;
+    color: white;
+}
+.nohay{
+    background-color:#FAE4CF;
+    width: 60%;
+    margin: auto;
+    border-radius: 15px;
+}
+.icono{
+    text-align: center;
+
+}

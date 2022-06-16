@@ -166,4 +166,48 @@ export class MascotasUsuariosComponent implements OnInit {
 
 
 
+    miMascota: FormGroup = this.form.group({
+      especie: ['',[Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
+      nombre: ['',[Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
+      pelaje: ['',[Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
+      raza: ['',[Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
+      sexo: ['',[Validators.required, Validators.pattern('^[A-Za-z ]+$')]]
+    })
+  
+  
+    
+  /**
+   * Método para hacer el registro de una mascota
+   * Añadir una mascota a un usuario
+   */
+    hacerRegistro (){
+      
+      let mascota : Mascota = this.miMascota.value;
+      this.administradorService.registroMascota(this.idUsu, mascota)
+      .subscribe({
+        next: (resp => {
+          
+          this.miMascota.reset();
+          this.ngOnInit();
+          Swal.fire({
+            title: 'La nueva mascota ha sido registrada',
+            icon: 'success',
+            showConfirmButton: false
+          })
+        }),
+        error : err => {
+          Swal.fire({
+            title: 'Error', 
+            text: err.error.message, 
+            icon: 'error',
+            color: '#3d3d1b',
+            background: '#FAE4CF',
+            showConfirmButton: false,})
+          
+        }
+      });
+    }
+
+
+
 }

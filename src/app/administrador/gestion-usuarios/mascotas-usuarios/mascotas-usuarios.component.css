@@ -56,3 +56,15 @@ i{
 input{
     background-color: #FAE4CF;
 }
+.ver{
+    background-color: #cb8f61;
+    color: white;
+}
+.ver:hover{
+    background-color: #dab695;
+    color: black;
+    
+}
+.fa-exclamation-circle{
+    color: balck;
+}

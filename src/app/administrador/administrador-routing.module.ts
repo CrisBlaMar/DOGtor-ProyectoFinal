@@ -9,6 +9,7 @@ import { MascotasUsuariosComponent } from './gestion-usuarios/mascotas-usuarios/
 import { ComentariosPublicadosComponent } from './comentarios-publicados/comentarios-publicados.component';
 import { GuardAdmin } from '../areasocios/guardAdmin.service';
 import { CitasUsurariosComponent } from './gestion-usuarios/citas-usurarios/citas-usurarios.component';
+import { HistorialMascotaComponent } from './gestion-usuarios/mascotas-usuarios/historial-mascota/historial-mascota.component';
 const routes: Routes = [
   {
     path:'', component: InicioComponent, canActivate: [GuardAdmin]
@@ -22,6 +23,7 @@ const routes: Routes = [
 { path: 'gestioncomentarios', component: GestionComentariosComponent,canActivate: [GuardAdmin]},
 { path: 'gestionusuarios/mascotasusuarios/:email', component: MascotasUsuariosComponent,canActivate: [GuardAdmin]},
 { path: 'gestionusuarios/citasusuarios/:email', component: CitasUsurariosComponent,canActivate: [GuardAdmin]},
+{ path: 'gestionusuarios/mascotasusuarios/:email/mascota/:chip/historial', component: HistorialMascotaComponent,canActivate: [GuardAdmin]},
 { path: 'comentariospubli', component: ComentariosPublicadosComponent, canActivate: [GuardAdmin]}
 
 ];

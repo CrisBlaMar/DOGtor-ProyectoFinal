@@ -7,6 +7,7 @@ import { Servicio } from '../../interfaces/servicio.interfaces';
 import { Mascota } from 'src/app/interfaces/mascota.interfaces';
 import { Comentario } from '../../interfaces/comentario.interfaces';
 import { Email } from 'src/app/interfaces/email.interfaces';
+import { Historial } from 'src/app/interfaces/historial.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -183,6 +184,47 @@ export class AdministradorService {
     return this.httpclient.get<Mascota>(url, {headers:opcionHeader});
   }
 
+  /**Método para obtener el historial de una mascota */
+  obtenerHistorialMascota(chip : number){
+    const url = `${this.baseUrl}/user/mascota/${chip}/historial`;
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.get<Historial>(url, {headers:opcionHeader});
+    
+  }
+
+  /**Método para añadir un historial a una mascota */
+  añadirHistorialAMascota(chip: number, historial : Historial){
+    const url = `${this.baseUrl}/user/mascota/${chip}/historial`;
+    let token = localStorage.getItem('token');
+    const body =  historial;
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.post<Historial>(url, body, {headers:opcionHeader});
+  }
+
+  /**Método para añadir un historial a una mascota */
+  editarHistorialMascota(chip: number, historial : Historial, id : number){
+    const url = `${this.baseUrl}/user/mascota/${chip}/historial/${id}`;
+    let token = localStorage.getItem('token');
+    const body =  historial;
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.put<Historial>(url, body, {headers:opcionHeader});
+  }
+
+  /**Método para obtener los datos de un historial de una mascota */
+  obtenerDatosHistorial(identificador : number){
+    const url = `${this.baseUrl}/user/mascota/historial/${identificador}`;
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.get<Historial>(url, {headers:opcionHeader});
+
+  }
+
+
   /**Método para borrar una mascota */
   borrarMascota(chip: number){
     const url = `${this.baseUrl}/user/mascota/${chip}`
@@ -190,6 +232,16 @@ export class AdministradorService {
     const opcionHeader = new HttpHeaders()
     .set('Authorization', `Bearer ${token}`);
     return this.httpclient.delete<Mascota>(url, {headers:opcionHeader});
+  }
+
+  /**Método para registrar una mascota a un usuario */
+  registroMascota (email: string, mascota : Mascota){
+    const url = `${this.baseUrl}/user/${email}/mascota`;
+    const body =  mascota;
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.post<Mascota>(url, body, {headers:opcionHeader});
   }
 
   /**Método para borrar una cita */
@@ -218,4 +270,6 @@ export class AdministradorService {
 
     return this.httpclient.post<Cita>(url, body, {headers:opcionHeader});
   }
+
+
 }

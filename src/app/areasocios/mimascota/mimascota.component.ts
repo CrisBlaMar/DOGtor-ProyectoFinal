@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../usuarios-services/usuario.service';
 import { Mascota } from '../../interfaces/mascota.interfaces';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-mimascota',
@@ -41,7 +41,10 @@ export class MimascotaComponent implements OnInit {
   }
 
 
+  
+
   ngOnInit(): void {
+    
 
     this.mostrarMascotas();
   }

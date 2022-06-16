@@ -16,14 +16,9 @@ export class CitasUsurariosComponent implements OnInit {
   constructor(private router: ActivatedRoute, private administradorservice : AdministradorService,
     private rou: Router, private form : FormBuilder) { }
 
-  
-
   idUsu: string = "";
   
-  
   ngOnInit(): void {
-
-
     this.router.params
     .subscribe( params => {
       this.idUsu = params['email'];
@@ -82,7 +77,6 @@ export class CitasUsurariosComponent implements OnInit {
       next: (resp => {
         this.citas.splice(index, 1);
         this.enviarmensaje();
-        console.log(this.idUsu)
         Swal.fire({ 
           title: 'La cita ha sido eliminada',
           icon: "success",
@@ -109,7 +103,7 @@ export class CitasUsurariosComponent implements OnInit {
   cris : string = "crisblancomartin96@gmail.com"
 
   mensaje: FormGroup = this.form.group({
-    to: [this.idUsu],
+    to: [this.cris],
     subject: ['Cita cancelada'],
     text : ['Lamentamos informarle que su cita, ha sido cancelada, por favor acceda a su Área de Socios para solicitar una nueva cita. Gracias y disculpe las molestias'] 
   })
@@ -122,8 +116,6 @@ export class CitasUsurariosComponent implements OnInit {
     this.administradorservice.enviarMensaje(this.mensaje.value)
     .subscribe({
       next: (resp =>{
-        console.log("enviadoooo")
-        
       }),
       error: resp => {
         Swal.fire({
@@ -183,6 +175,7 @@ export class CitasUsurariosComponent implements OnInit {
     .subscribe({
       next:  (resp=>{
         this.citaPrevia.reset();
+        this.ngOnInit();
         Swal.fire({
           title: '¡Su cita ha sido registrada satisfactoriamente!',
           icon: 'success',

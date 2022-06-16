@@ -14,6 +14,7 @@ import { EditarDatosComponent } from './editar-datos/editar-datos.component';
 import { HijoComponent } from './hijo/hijo.component';
 import { MisCitasComponent } from './mis-citas/mis-citas.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { HistorialComponent } from './mimascota/historial/historial.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     MisdatosComponent,
     EditarDatosComponent,
     HijoComponent,
-    MisCitasComponent
+    MisCitasComponent,
+    HistorialComponent
   ],
   imports: [
     CommonModule,

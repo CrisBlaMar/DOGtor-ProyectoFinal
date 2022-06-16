@@ -8,6 +8,7 @@ import { MimascotaComponent } from './mimascota/mimascota.component';
 import { MisdatosComponent } from './misdatos/misdatos.component';
 import { EditarDatosComponent } from './editar-datos/editar-datos.component';
 import { MisCitasComponent } from './mis-citas/mis-citas.component';
+import { HistorialComponent } from './mimascota/historial/historial.component';
 const routes: Routes = [
   {
     path:'', component: LoginComponent
@@ -23,7 +24,8 @@ const routes: Routes = [
 { path:'mimascota', component: MimascotaComponent, canActivate: [Guard]},
 { path:'misdatos', component: MisdatosComponent, canActivate: [Guard]},
 { path:'editardatos', component:EditarDatosComponent, canActivate: [Guard]},
-{ path: 'miscitas', component:MisCitasComponent, canActivate: [Guard]}
+{ path: 'miscitas', component:MisCitasComponent, canActivate: [Guard]},
+{ path: 'mimascota/:chip/historial', component: HistorialComponent, canActivate: [Guard]}
 
 
 

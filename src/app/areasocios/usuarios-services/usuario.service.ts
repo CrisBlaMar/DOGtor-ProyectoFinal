@@ -6,6 +6,7 @@ import { Usuario } from 'src/app/interfaces/usuario.interfaces';
 import { Mascota } from '../../interfaces/mascota.interfaces';
 import { Observable} from 'rxjs';
 import {  Citas } from 'src/app/interfaces/cita.interfaces';
+import { Historial } from 'src/app/interfaces/historial.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -80,6 +81,24 @@ export class UsuarioService {
     
   }
 
+  /**Método para obtener el historial de una mascota */
+  obtenerHistorialMascota(chip : number){
+    const url = `${this.baseUrl}/user/mascota/${chip}/historial`;
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.get<Historial>(url, {headers:opcionHeader});
+    
+  }
+
+  /**Método para obtener los datos de una mascota por su chip */
+  obtenerDatosMascota(chip: number){
+    const url = `${this.baseUrl}/user/mascota/${chip}`
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.get<Mascota>(url, {headers:opcionHeader});
+  }
 
   /**Método para obtener los datos de un usuario */
   obtenerDatosUsuario (){
