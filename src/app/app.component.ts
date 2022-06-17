@@ -15,9 +15,5 @@ export class AppComponent {
   }
 
 
-  
-
-  
-
 
 }

@@ -20,11 +20,11 @@ export class SharedComponent implements OnInit {
       .subscribe(
         res => {
           this.mostrarCerrarSesion();
-          this.comprobarRol();
+          this.cambiarnavbar();
+          
         }
     );
     this.mostrarCerrarSesion();
-    this.cambiarnavbar();
     
   }
 
@@ -50,23 +50,26 @@ export class SharedComponent implements OnInit {
   rol: string = '';
 
   comprobarRol(){
+    if(localStorage.getItem('token')){
       this.usuarioService.obtenerDatosUsuario()
       .subscribe({
         next: (resp =>{
           this.rol = resp.role;
-          this.cambiarnavbar();
         }),
         error: resp => {
           this.navbarUsuario = true;
           this.navbarAdmin= false;
         }
       })
-      
+    }else{
+      this.rol = "";
+    }
       
   }
 
 //método para cambiar el navbar dependiendo del rol del usuario que este logueado
   cambiarnavbar(){
+    this.comprobarRol();
     if(this.rol == "ADMIN"){
       this.navbarUsuario = false;
       this.navbarAdmin = true;
