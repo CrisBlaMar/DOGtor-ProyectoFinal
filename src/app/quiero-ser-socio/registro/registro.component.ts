@@ -81,7 +81,6 @@ export class RegistroComponent implements OnInit {
     } else if ( errors['enUso'] ) {
       return 'El email ya se encuentra registrado, pruebe con otro';
     }
-
     return '';
   }
 

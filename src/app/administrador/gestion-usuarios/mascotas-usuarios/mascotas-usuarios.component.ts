@@ -142,7 +142,7 @@ export class MascotasUsuariosComponent implements OnInit {
         next: (resp => {
           this.mascotas.splice(index, 1);
           Swal.fire({ 
-            title: 'La mascota '+ resp.nombre +' ha sido eliminada',
+            title: 'La mascota ha sido eliminada',
             icon: "success",
             color: '#3d3d1b',
             background: '#FAE4CF',
