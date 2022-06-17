@@ -227,4 +227,35 @@ export class GestionUsuariosComponent implements OnInit {
   }
 
 
+
+
+  formato : string = "pdf";
+
+
+  obtenerInformeUsuarios(){
+    this.administradorService.obtenerInformeUsuarios(this.formato)
+    .subscribe({
+      next: (resp => {
+        Swal.fire({
+          title: 'Success', 
+          text: 'El informe se ha descargado en: C:/Users/Public/Documents',
+          icon: 'success',
+          color: '#3d3d1b',
+          background: '#FAE4CF',
+          showConfirmButton: false,})
+    }),
+      error: resp => {
+        Swal.fire({
+          title: 'Success', 
+          text: 'El informe se ha descargado en: C:/Users/Public/Documents',
+          icon: 'success',
+          color: '#3d3d1b',
+          background: '#FAE4CF',
+          showConfirmButton: false,})
+      }
+  });
+
+  }
+
+
 }

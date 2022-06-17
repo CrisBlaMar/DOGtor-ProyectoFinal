@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { GestionCitasComponent } from './gestion-citas/gestion-citas.component';
 import { GestionServiciosComponent } from './gestion-servicios/gestion-servicios.component';
 import { GestionComentariosComponent } from './gestion-comentarios/gestion-comentarios.component';
 import { MascotasUsuariosComponent } from './gestion-usuarios/mascotas-usuarios/mascotas-usuarios.component';
@@ -18,7 +17,6 @@ const routes: Routes = [
   }, 
 { path: 'inicioAdmin', component: InicioComponent,canActivate: [GuardAdmin]},
 { path: 'gestionusuarios', component: GestionUsuariosComponent,canActivate: [GuardAdmin]},
-{ path: 'gestioncitas', component: GestionCitasComponent,canActivate: [GuardAdmin]},
 { path: 'gestionservicios', component: GestionServiciosComponent,canActivate: [GuardAdmin]},
 { path: 'gestioncomentarios', component: GestionComentariosComponent,canActivate: [GuardAdmin]},
 { path: 'gestionusuarios/mascotasusuarios/:email', component: MascotasUsuariosComponent,canActivate: [GuardAdmin]},

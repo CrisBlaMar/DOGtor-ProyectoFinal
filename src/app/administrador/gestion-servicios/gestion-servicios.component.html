@@ -24,6 +24,9 @@
   </div>
 
   <div class="container-fluid text-center" *ngIf="listaservicios.length > 0" >
+    <button type="button" class="btn btn-primary informe m-3" (click)="obtenerInforme()">
+      Obtener Informe
+     </button>
 
   <table class="table mb-5">
       <thead>
@@ -31,6 +34,7 @@
           <th scope="col">#</th>
           <th scope="col">Nombre</th>
           <th scope="col">Descripción</th>
+          <th scope="col">Precio</th>
           <th scope="col"><i class="fa fa-trash" aria-hidden="true"></i></th>
           <th scope="col"><img class="iconoeditar" src="../../../assets/img/lapiz.png" alt=""></th>
         </tr>
@@ -40,6 +44,7 @@
           <th scope="row">{{serv.referencia}}</th>
           <td>{{serv.nombre}}</td>
           <td>{{serv.descripcion}}</td>
+          <td>{{serv.precio}} €</td>
           <td><button type="button" class="btn btn-primary borrar" (click)="borrarServicio(serv.referencia)">Borrar</button></td>
           <td>
             <button type="button" class="btn btn-primary editar" 
@@ -51,6 +56,8 @@
         </tr>
       </tbody>
   </table>
+  
+
 </div>
 
 
@@ -75,6 +82,11 @@
                       <input class="form-control" id="descripcion" formControlName="descripcion" type="text" value="{{descripcionServicioAEditar}}">
                       <span class="form-text text-danger" *ngIf="miFormulario.controls['descripcion'].errors && miFormulario.controls['descripcion'].touched">Debe introducir una descripción correcta</span>
                       <label for="descripcion" class="text-dark">Descripción</label>
+                    </div>
+                    <div class="form-floating mt-2">
+                      <input class="form-control" id="pre" formControlName="precio" type="text" value="{{tarifaServicioAEditar}}">
+                      <span class="form-text text-danger" *ngIf="miFormulario.controls['precio'].errors && miFormulario.controls['precio'].touched">Debe introducir un precio correcto</span>
+                      <label for="pre" class="text-dark">Precio</label>
                     </div>
                     <br>
                     <button class="btn editar" (click)="editarServicio(referenciaServicioAEditar)" [disabled]="miFormulario.invalid" type="submit" routerLink="/gestionservicios" >Editar servicio</button>
@@ -107,6 +119,11 @@
                       <input class="form-control" id="des" formControlName="descripcion" type="text">
                       <span class="form-text text-danger" *ngIf="miFormularioPublicado.controls['descripcion'].errors && miFormularioPublicado.controls['descripcion'].touched">Debe introducir una descripción correcta</span>
                       <label for="des" class="text-dark">Descripción</label>
+                    </div>
+                    <div class="form-floating mt-2">
+                      <input class="form-control" id="pr" formControlName="precio" type="text">
+                      <span class="form-text text-danger" *ngIf="miFormularioPublicado.controls['precio'].errors && miFormularioPublicado.controls['precio'].touched">Debe introducir una descripción correcta</span>
+                      <label for="pr" class="text-dark">Precio</label>
                     </div>
                     <br>
                     <button class="btn publicarservicio" (click)="publicarServicio()" [disabled]="miFormularioPublicado.invalid" type="submit">Publicar nuevo servicio</button>

@@ -3,7 +3,6 @@ import { Servicio } from '../../interfaces/servicio.interfaces';
 import { ServicioService } from './servicios.service';
 import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
-import { Tarifa } from '../../interfaces/tarifa.interfaces';
 
 @Component({
   selector: 'app-servicios',
@@ -15,7 +14,6 @@ export class ServiciosComponent implements OnDestroy, OnInit{
   constructor(private servicioService : ServicioService) { }
 
   servicios : Servicio [] = [];
-  tarifas : Tarifa [] = [];
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 

@@ -1,0 +1,139 @@
+
+<header>
+
+    <!--NAVBAR PARA EL USUARIO-->
+    <nav class="navbar navbar-expand-lg " *ngIf="navbarUsuario">
+      <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['']"><img class="logotipo" src="./assets/img/segundologo.png" alt="logotipo de Dogtor"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="hamburguesa"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a class="enlace"  [routerLink]="['']"  ><i class="fa fa-home" aria-hidden="true"></i> INICIO</a>
+            </li>
+            <li class="nav-item " routerLinkActive="active" >
+              <a   class=" enlace "  [routerLink]="['/servicios']"   ><i class="fa fa-list" aria-hidden="true"></i> SERVICIOS</a>
+            </li>
+            <li  class="nav-item " routerLinkActive="active">
+              <a class="enlace "  [routerLink]="['/sobrenosotros']"  ><i class="fa fa-users" aria-hidden="true"></i> SOBRE NOSOTROS</a>
+            </li>
+            <li class="nav-item dropdown" routerLinkActive="active">
+              <div class="dropdown">
+                <a data-toggle="collapse" class="enlace dropdown-toggle" id="dropdownMenuButton1" 
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-user" aria-hidden="true"></i> ÁREA DE SOCIOS
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a  class=" text-white dropdown-item" [routerLink]="['/areasocios']"><i class="fa fa-arrow-right" aria-hidden="true"></i> INICIAR SESIÓN</a></li>
+                  <li *ngIf="mostrar" ><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/opciones']"><i class="fa fa-list-ol" aria-hidden="true"></i> OPCIONES</a></li>
+                  <li *ngIf="mostrar" ><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/mimascota']"><i class="fa fa-paw" aria-hidden="true"></i> MI MASCOTA</a></li>
+                  <li *ngIf="mostrar" ><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/registromascota']"><i class="fa fa-paw" aria-hidden="true"></i><i class="fa fa-plus" aria-hidden="true"></i> REGISTRAR UNA MASCOTA NUEVA</a></li>
+                  <li *ngIf="mostrar" ><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/misdatos']" ><i class="fa fa-address-card" aria-hidden="true"></i> MIS DATOS</a></li>
+                  <li *ngIf="mostrar" ><a  class=" text-white dropdown-item" [routerLink]="['/areasocios/miscitas']" ><i class="fa fa-calendar" aria-hidden="true"></i> MIS CITAS</a></li>
+                  <li *ngIf="mostrar" ><a class=" text-white dropdown-item" [routerLink]="['']" (click)="cerrarSesion()"><i class="fa fa-times" aria-hidden="true"></i> Cerrar Sesión</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item " routerLinkActive="active">
+              <a class="enlace"  [routerLink]="['/quierosersocio']"  ><i class="fa fa-user" aria-hidden="true"></i><i class="fa fa-plus" aria-hidden="true"></i> QUIERO SER SOCIO</a>
+            </li>
+            <li class="nav-item " routerLinkActive="active">
+              <a class="enlace"  [routerLink]="['/citaprevia']"  ><i class="fa fa-calendar" aria-hidden="true"></i> CITA PREVIA</a>
+            </li>
+            <li  class="nav-item " routerLinkActive="active">
+              <a class="enlace"  [routerLink]="['/contacto']"  ><i class="fa fa-envelope" aria-hidden="true"></i> CONTACTO</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+  
+    <!--NAVBAR PARA EL ADMINISTRADOR-->
+    <nav class="navbar navbar-expand-lg " *ngIf="navbarAdmin">
+      <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/administrador/inicioAdmin']"><img class="logotipo" src="./assets/img/segundologo.png" alt="logotipo de Dogtor"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="hamburguesa"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a class="enlace"  aria-current="page" [routerLink]="['/administrador/inicioAdmin']">INICIO</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="enlace" [routerLink]="['/administrador/gestionservicios']">Gestión Servicios</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="enlace" [routerLink]="['/administrador/gestionusuarios']" >Gestión Usuarios</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="enlace" [routerLink]="['/administrador/gestioncomentarios']" >Gestión Comentarios</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="enlace" [routerLink]="['/administrador/comentariospubli']" >Comentarios Publicados</a>
+            </li>
+            <li class="nav-item" *ngIf="mostrar">
+              <a class="enlace" routerLink="''" (click)="cerrarSesion()"><i class="fa fa-times" aria-hidden="true"></i> Cerrar Sesión</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+  
+  
+  
+  
+  
+  
+  </header>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <router-outlet></router-outlet>
+  
+  
+  <footer class=" footer text-center text-white">
+  
+    <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2022 Copyright : DOGtor Clínica Veterinaria
+    </div>
+    <div class="container">
+  
+      <section class="">
+  
+        <a
+          class="btn redesSociales m-3"
+          href="https://www.facebook.com"
+          target="_blank"
+          role="button"
+          ><img src="./assets/iconos/facebook-square-brands.svg" alt="logotipo facebook" class="redesSociales"></a>
+  
+  
+        <a
+          class="btn redesSociales m-"
+          href="https://www.twitter.com"
+          target="_blank"
+          role="button"
+          > <img src="./assets/iconos/twitter-brands.svg" alt="logotipo twitter" class="redesSociales"></a>
+  
+  
+        <a
+          class="btn redesSociales m-3"
+          href="https://www.gmail.com"
+          target="_blank"
+          role="button"
+          ><img src="./assets/iconos/envelope-solid.svg" alt="logotipo gmail" class="redesSociales"></a>
+  
+      </section>
+    </div>
+  </footer>

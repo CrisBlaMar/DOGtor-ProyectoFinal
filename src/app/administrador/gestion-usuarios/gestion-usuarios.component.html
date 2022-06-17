@@ -23,6 +23,12 @@
     </div>
 
   <div class="container-fluid row text-center" *ngIf="usuariosUsers.length > 0">
+    <div class="botoninforme">
+      <button type="button" class="btn btn-primary informe m-3" (click)="obtenerInformeUsuarios()">
+        Obtener Informe
+      </button>
+    </div>
+
       <table class="table col-lg-12 col-md-12 col-sm-6 col-xs-12 mt-2 mb-5">
         <thead>
           <tr>

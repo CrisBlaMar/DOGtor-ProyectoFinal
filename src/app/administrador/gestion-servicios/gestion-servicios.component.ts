@@ -15,6 +15,36 @@ export class GestionServiciosComponent implements OnInit {
 
   listaservicios : Servicio [] = [];
 
+  formato : string = "pdf";
+
+
+  obtenerInforme(){
+    this.administradorservice.obtenerInformeServicios(this.formato)
+    .subscribe({
+      next: (resp => {
+        Swal.fire({
+          title: 'Success', 
+          text: 'El informe se ha descargado en: C:/Users/Public/Documents',
+          icon: 'success',
+          color: '#3d3d1b',
+          background: '#FAE4CF',
+          showConfirmButton: false,})
+    }),
+      error: resp => {
+        Swal.fire({
+          title: 'Success', 
+          text: 'El informe se ha descargado en: C:/Users/Public/Documents',
+          icon: 'success',
+          color: '#3d3d1b',
+          background: '#FAE4CF',
+          showConfirmButton: false,})
+      }
+  });
+
+  }
+
+
+
   /**Método para mostrar los servicios */
   mostrarServicios(){
     this.administradorservice.obtenerServicios()
@@ -81,7 +111,8 @@ export class GestionServiciosComponent implements OnInit {
 
   miFormulario: FormGroup = this.form.group({
     nombre: ['',[Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
-    descripcion: ['', [ Validators.required, Validators.pattern('^[A-Za-z ]+$')]]
+    descripcion: ['', [ Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
+    precio: ['', [ Validators.required, Validators.pattern('^[0-9,$]*$') ]]
   })
 
   /**Método para editar los servicios */
@@ -93,8 +124,8 @@ export class GestionServiciosComponent implements OnInit {
       next: (resp =>{
 
         this.listaservicios.splice(index, 1, resp);
-
         this.miFormulario.reset();
+        this.ngOnInit();
       })
       ,
       error: resp => {
@@ -123,7 +154,7 @@ export class GestionServiciosComponent implements OnInit {
         this.referenciaServicioAEditar = resp.referencia;
         this.nombreServicioAEditar = resp.nombre;
         this.descripcionServicioAEditar = resp.descripcion;
-        this.tarifaServicioAEditar = resp.tarifas[0].precio;
+        this.tarifaServicioAEditar = resp.precio;
       })
       ,
       error: resp => {
@@ -142,7 +173,8 @@ export class GestionServiciosComponent implements OnInit {
 
   miFormularioPublicado: FormGroup = this.form.group({
     nombre: ['',[Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
-    descripcion: ['', [ Validators.required, Validators.pattern('^[A-Za-z ]+$')]]
+    descripcion: ['', [ Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
+    precio: ['', [ Validators.required, Validators.pattern('^[0-9,$]*$') ]]
   })
 
 

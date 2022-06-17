@@ -94,3 +94,18 @@ th{
 .fa-exclamation-circle{
     color: balck;
 }
+.informe{
+    text-align: center;
+    width: 12%;
+    background-color: #60602b;
+    border-color: #60602b;
+    color: white;
+}
+.informe:hover{
+    background-color: #979748;
+    border-color: #979748;
+    color: black;
+}
+.botoninforme{
+    margin: auto;
+}

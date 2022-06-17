@@ -5,7 +5,6 @@ import { InicioComponent } from './inicio/inicio.component';
 import { RouterModule } from '@angular/router';
 import { AdministradorRoutingModule } from './administrador-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GestionCitasComponent } from './gestion-citas/gestion-citas.component';
 import { GestionComentariosComponent } from './gestion-comentarios/gestion-comentarios.component';
 import { GestionServiciosComponent } from './gestion-servicios/gestion-servicios.component';
 import { MascotasUsuariosComponent } from './gestion-usuarios/mascotas-usuarios/mascotas-usuarios.component';
@@ -21,7 +20,6 @@ import { HistorialMascotaComponent } from './gestion-usuarios/mascotas-usuarios/
   declarations: [
     GestionUsuariosComponent,
     InicioComponent,
-    GestionCitasComponent,
     GestionComentariosComponent,
     GestionServiciosComponent,
     MascotasUsuariosComponent,

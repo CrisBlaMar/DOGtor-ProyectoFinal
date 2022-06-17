@@ -35,6 +35,49 @@ export class MisCitasComponent implements OnInit {
   });
   }
 
+  /**Método para borrar un usuario */
+  borrarCita(id: number){
+    const index = this.citas.findIndex(i => i.id == id);
+    Swal.fire({
+      title: 'Borrar Cita',
+      icon: 'warning'  ,
+      text: '¿Quieres borrar la cita con identificador ' + id +' ?',
+      color: '#3d3d1b',
+      background: '#FAE4CF',
+      confirmButtonColor: '#6D6D43',
+      cancelButtonColor: '#A52A2A',
+      showCancelButton: true,
+      confirmButtonText: 'Sí',
+      cancelButtonText: 'No',
+    }).then((result) => {
+      if (result.isConfirmed) {
+    this.usuarioservice.borrarCita(id)
+    .subscribe({
+      next: (resp => {
+        this.citas.splice(index, 1);
+        Swal.fire({ 
+          title: 'La cita ha sido eliminada',
+          icon: "success",
+          color: '#3d3d1b',
+          background: '#FAE4CF',
+          showConfirmButton: false
+        })
+       
+    }),
+      error: resp => {
+        Swal.fire({
+          title: 'Error', 
+          text: resp.error.message, 
+          icon: 'error',
+          color: '#3d3d1b',
+          background: '#FAE4CF',
+          showConfirmButton: false,})
+      }
+  });
+  }
+  })
+  }
+
 
 
 

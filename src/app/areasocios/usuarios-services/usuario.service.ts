@@ -127,4 +127,13 @@ export class UsuarioService {
     return this.httpclient.get<Citas []>(url, {headers:opcionHeader});
   }
 
+  /**método para borrar citas */
+  borrarCita(id:number){
+    const url = `${this.baseUrl}/user/cita/${id}`
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.delete<Citas>(url, {headers:opcionHeader});
+  }
+
 }

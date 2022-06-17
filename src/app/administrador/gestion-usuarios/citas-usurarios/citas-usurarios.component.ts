@@ -5,6 +5,7 @@ import { Cita, Citas } from '../../../interfaces/cita.interfaces';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { Mascota } from 'src/app/interfaces/mascota.interfaces';
+import { Email } from '../../../interfaces/email.interfaces';
 
 @Component({
   selector: 'app-citas-usurarios',
@@ -100,20 +101,11 @@ export class CitasUsurariosComponent implements OnInit {
   })
   }
 
-  cris : string = "crisblancomartin96@gmail.com"
-
-  mensaje: FormGroup = this.form.group({
-    to: [this.cris],
-    subject: ['Cita cancelada'],
-    text : ['Lamentamos informarle que su cita, ha sido cancelada, por favor acceda a su Área de Socios para solicitar una nueva cita. Gracias y disculpe las molestias'] 
-  })
-
-
   /**
    * Método para enviar un mensaje
    */
   enviarmensaje(){
-    this.administradorservice.enviarMensaje(this.mensaje.value)
+    this.administradorservice.enviarMensaje(this.idUsu)
     .subscribe({
       next: (resp =>{
       }),
@@ -129,10 +121,6 @@ export class CitasUsurariosComponent implements OnInit {
       }
     })
   }
-
-
-
-
 
 
   mascotas : Mascota [] = [];

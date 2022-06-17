@@ -8,11 +8,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DondeEstoyModule } from './donde-estoy/donde-estoy.module';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
-
+import { SharedComponent } from './shared/shared.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SharedComponent
   ],
   imports: [
     BrowserModule,

@@ -254,10 +254,13 @@ export class AdministradorService {
   }
 
   /**Método para enviar un mensaje de aviso cuando una cita haya sido eliminada */
-  enviarMensaje(mensaje : Email){
-    const url = `${this.baseUrl}/enviaremail`;
-    const body = mensaje;
-    return this.httpclient.post<Email>(url, body);
+  enviarMensaje(email : string){
+    const url = `${this.baseUrl}/user/cita/enviaremail`;
+    const body = email;
+    let token = localStorage.getItem('token');
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    return this.httpclient.post<Email>(url, body, {headers:opcionHeader});
   }
 
   /**Método para realizar una cita previa */
@@ -270,6 +273,19 @@ export class AdministradorService {
 
     return this.httpclient.post<Cita>(url, body, {headers:opcionHeader});
   }
+
+  /**Método para obtener el informe de los servicios de la clínica */
+  obtenerInformeServicios(formato : string){
+    const url = `${this.baseUrl}/report/${formato}`;
+    return this.httpclient.get<String>(url);
+  }
+
+  /**Método para obtener el informe de los usuarios de la clínica */
+  obtenerInformeUsuarios(formato : string){
+    const url = `${this.baseUrl}/reportusers/${formato}`;
+    return this.httpclient.get<String>(url);
+  }
+
 
 
 }

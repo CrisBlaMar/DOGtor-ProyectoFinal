@@ -4,37 +4,24 @@
 no tienes ninguna cita</p>
         <h3 class="text-center">¿Quieres añadir una nueva cita?</h3>
         <div class="boton">
-            <button class="btn mt-4 mb-4" type="button" routerLink="/areasocios/miscitas">REGISTRAR NUEVA CITA</button>
+            <button class="btn mt-4 mb-4" type="button" routerLink="/citaprevia">REGISTRAR NUEVA CITA</button>
         </div>
     </div>
 </div>
 
 
-
-
-
 <div class="container row" >
-    <div class="card text-center col-lg-3 col-md-6 col-sm-12 col-xs-12 mt-2 m-2" *ngFor="let cita of citas, let i = index">
-        <div class="card-body">
-            <img src="./assets/img/cita.png" alt="icono grande de un calendario">
-            <h5>Cita nº{{i+1}}</h5>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Fecha y hora</th>
-                    <th scope="col">Mascota</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{{cita.fecha}}</td>
-                    <td>{{cita.mascota.nombre}}</td>
-                  </tr>
-                </tbody>
-              </table>
-
-        </div>
-    </div>
+  <div class="card text-center container-fluid col-lg-3 col-md-6 col-sm-12 col-xs-12 mt-2 mb-2" *ngFor="let cita of citas">
+          
+      <div class="card-body " >
+          <i class="fa fa-calendar fa-3x" aria-hidden="true"></i><br><br>
+          <p class="card-text bold">Cita nº {{cita.id}}</p>
+          <hr>
+          <p class="card-text">Fecha: {{cita.fecha}}</p>
+          <p class="card-text">Mascota: {{cita.mascota.nombre}}</p>
+          <button class="btn borrar m-1" (click)="borrarCita(cita.id)">Borrar</button>
+      </div>
+  </div>
 </div>
 
 <app-ubicacion info="MIS CITAS"></app-ubicacion>

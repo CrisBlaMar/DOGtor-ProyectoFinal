@@ -34,17 +34,23 @@ h5{
      color: #44522b;
  }
  p{
-     font-size: 28px;
-     font-family: cocogose;
- }
+    font-size: 16px;
+}
  .card{
-     border-radius: 30px;
-     background-color: #E9BB97;
- }
+    border-radius: 30px;
+    background-color:#FAE4CF;
+}
 
  @media screen and (min-width: 300px) and (max-width: 698px){
 
     .nohaycita{
         width: 100%;
     }
+}
+.borrar{
+    background-color: brown;
+    color: white;
+}
+.borrar:hover{
+    background-color: rgb(232, 59, 59);
 }

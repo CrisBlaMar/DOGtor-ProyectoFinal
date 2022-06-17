@@ -78,3 +78,13 @@ input{
 .fa-exclamation-circle{
     color: balck;
 }
+.informe{
+    background-color: #60602b;
+    border-color: #60602b;
+    color: white;
+}
+.informe:hover{
+    background-color: #979748;
+    border-color: #979748;
+    color: black;
+}

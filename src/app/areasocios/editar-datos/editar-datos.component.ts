@@ -4,6 +4,7 @@ import { Usuario } from 'src/app/interfaces/usuario.interfaces';
 import Swal from 'sweetalert2';
 import { EditarDatosService } from './editar-datos.service';
 import { UsuarioService } from '../usuarios-services/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar-datos',
@@ -15,7 +16,7 @@ export class EditarDatosComponent implements OnInit {
   carga : boolean = false;
 
   constructor(private editardatosservice : EditarDatosService, private form : FormBuilder, 
-    private usuarioservice : UsuarioService) { }
+    private usuarioservice : UsuarioService, private router : Router) { }
 
   miFormulario: FormGroup = this.form.group({
     nombre: ['',[Validators.required, Validators.pattern('^[A-Za-z ]+$')]],
@@ -34,7 +35,9 @@ export class EditarDatosComponent implements OnInit {
       this.editardatosservice.editarmisDatos(usuario)
       .subscribe({
         next: (resp =>{
+          this.router.navigateByUrl('/areasocios/misdatos');
           this.miFormulario.reset();
+          
         
         })
         ,
